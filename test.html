@@ -1,62 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Test</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test</title>
 
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/BootSideMenu.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/BootSideMenu.css" rel="stylesheet">
+  <!-- HTML5 shim e Respond.js per rendere compatibile l'HTML 5 in IE8 -->
+  <!-- ATTENZIONE: Respond.js non funziona se la pagina viene visualizzata in locale file:// -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.min.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
 
-	<!-- HTML5 shim e Respond.js per rendere compatibile l'HTML 5 in IE8 -->
-	<!-- ATTENZIONE: Respond.js non funziona se la pagina viene visualizzata in locale file:// -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-      <![endif]-->
-  </head>
-  <body>
+<style type="text/css">
+  .user{
+    padding:5px;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
 
-    <!--Test -->
-    <div id="test">
-      <a href="ciao ciao">
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-      </a>
+  <!--Test -->
+  <div id="test">
+    <div class="user">
+      <img src="http://image.priceprice.k-img.com/ph/images/common/face_japan_01.gif" alt="Esempio" class="img-thumbnail">
+      <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
     </div>
-    <!--/Test -->
-
-        <!--Test 2 -->
-    <div id="test2">
-      <a href="ciao ciao">secondo test</a>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Cras justo odio</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#subTest" class="list-group-item">Sub menù test</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta Porta Porta sdaf s fs hfuis uif ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
     </div>
-    <!--/Test 2-->
+
+    <div class="list-group submenu" id="subTest">
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#subTestSub" class="list-group-item">Sub di Sub</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+    </div> 
+
+    <div class="list-group submenu" id="subTestSub">
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+    </div> 
+
+  </div>
+  <!--/Test -->
+
+  <!--Test 2 -->
+  <div id="test2">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Cras justo odio</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#subRight" class="list-group-item">Sub Menu</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
+
+    <div class="list-group submenu" id="subRight">
+      <a href="#" class="list-group-item">a destra</a>
+      <a href="#subRight2" class="list-group-item">Sub right 2</a>
+    </div> 
+
+        <div class="list-group submenu" id="subRight2">
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+      <a href="#" class="list-group-item">Morbi leo risus</a>
+      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+      <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div> 
+  </div>
+  <!--/Test 2-->
 
 
-  	<div class="container" style="background-color:gray;">
-  		<div class="row" style="background-color:red;">
-  			<div class="col-md-12" style="background-color:green;"><h1>Nano Test!</h1></div>
-  		</div>
-  	</div>
+  <!--Normale contenuto di pagina-->
+  <div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="https://github.com/AndreaLombardo/BootSideMenu">BootSideMenu</a> 
+        </div>
+        <p class="navbar-text navbar-right">Realizzato da <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a></p>
+      </div>
+    </nav>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <h1>BootSideMenu ;-)</h1>
+          <p>Pagina di test...</p>
+        </div>
+      </div>
+    </div>
 
-  	<script src="js/jquery-1.11.1.min.js"></script>
-  	<script src="js/bootstrap.min.js"></script>
-  	<script src="js/BootSideMenu.js"></script>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">HTML</div>
+          <div class="panel-body">
+            codice html
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">JavaScript</div>
+          <div class="panel-body">
+            codice JavaScript
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Call</div>
+          <div class="panel-body">
+            $('#test').BootSideMenu({side:"left", autoClose:true});
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script type="text/javascript">
-      $('#test').BootSideMenu({side:"left", autoClose:false});
-      $('#test2').BootSideMenu({side:"right", autoClose:true});
-    </script>
+  </div>
+  <!--Normale contenuto di pagina-->
+
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/BootSideMenu.js"></script>
+
+  <script type="text/javascript">
+    $('#test').BootSideMenu({side:"left", autoClose:false});
+    $('#test2').BootSideMenu({side:"right"});
+  </script>
 
 </body>
 </html>
