@@ -1,6 +1,8 @@
 js/bootstrap.js
 js/bootstrap.min.js
 js/jquery-1.11.1.min.js
+js/html5shiv.min.js
+js/respond.min.js
 css/bootstrap-theme.min.css
 css/bootstrap-theme.css.map
 css/bootstrap-theme.css

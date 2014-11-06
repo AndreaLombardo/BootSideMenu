@@ -33,10 +33,6 @@
 
         this.html(newCode);
 
-        
-
-        console.log(side);
-
     };
 
     $(document).on('click','.toggler', function(){

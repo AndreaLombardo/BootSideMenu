@@ -18,3 +18,11 @@ JavaScript
 ```JavaScript
 $("#idelemento").BootSideMenu();
 ```
+
+```JavaScript
+$("#idelemento").BootSideMenu({side:'left'}); //a sinistra
+```
+
+```JavaScript
+$("#idelemento").BootSideMenu({side:'right'}); //a destra
+```
