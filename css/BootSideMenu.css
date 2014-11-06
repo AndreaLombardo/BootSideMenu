@@ -162,6 +162,9 @@
       border-radius:0px;
 }
 
+.sidebar .list-group{
+      margin-bottom:0px;
+}
 .sidebar .list-group-item{
       padding: 5px;
       border: 1px solid #DDD;

@@ -49,9 +49,9 @@
 	});
 
 
-	$(document).on('click', '.sidebar .list-group-item', function(){
+	$(document).on('click', '.sidebar .list-group-item', function(event){
 		var idToToggle, this_offset, this_x, this_y, href, side;
-
+		event.preventDefault();
 		href = $(this).attr('href');
 
 		if(href.substr(0,1)=='#'){
@@ -64,14 +64,14 @@
 				side = $(this).parent().parent().attr('data-side');
 
 				if(side=='left'){
-					this_x = this_offset.left + $(this).width() + 10;
+					this_x = $(this).width() + 10;
 					this_y = this_offset.top +1;
 					$('#'+idToToggle).css('left', this_x);
 					$('#'+idToToggle).css('top', this_y);			
 				}else if(side=='right'){
-					this_x = this_offset.left - $('#'+idToToggle).width();
+					this_x = $(this).width()+10;
 					this_y = this_offset.top +1;
-					$('#'+idToToggle).css('left', this_x);
+					$('#'+idToToggle).css('right', this_x);
 					$('#'+idToToggle).css('top', this_y);			
 				}
 
