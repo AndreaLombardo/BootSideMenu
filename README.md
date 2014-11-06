@@ -18,11 +18,29 @@ JavaScript
 ```JavaScript
 $("#idelemento").BootSideMenu();
 ```
+Il plugin accetta due parametri opzionali
 
 ```JavaScript
-$("#idelemento").BootSideMenu({side:'left'}); //a sinistra
+side : 'left' //o 'right'
 ```
+Specifica il lato della pagina nel quale verrà realizzato il menu. Di default è <b>left</b> (a sinistra).
 
 ```JavaScript
-$("#idelemento").BootSideMenu({side:'right'}); //a destra
+autoClose : true //o false
 ```
+Determina se il menu dovrà essere chiuso automaticamente all'apertura della pagina. Di default è <b>true</b>.
+
+Esempio
+-----------
+```JavaScript
+$("#idelemento").BootSideMenu({side:'left'});
+```
+il menù verrà creato a sinistra della pagina e al caricamento della stessa, esso verà chiuso.
+
+```JavaScript
+$("#idelemento").BootSideMenu({
+	side:'right',
+	autoClose:false
+});
+```
+il menù verrà creato a destra della pagina e al caricamento della stessa, esso <b>non</b> verà chiuso.

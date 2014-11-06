@@ -19,11 +19,27 @@
   </head>
   <body>
 
-  	<!--Test -->
-  	<div id="test">
-      <a href="ciao ciao">ciao ciao</a>
-  	</div>
-  	<!--/Test -->
+    <!--Test -->
+    <div id="test">
+      <a href="ciao ciao">
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+      </a>
+    </div>
+    <!--/Test -->
+
+        <!--Test 2 -->
+    <div id="test2">
+      <a href="ciao ciao">secondo test</a>
+    </div>
+    <!--/Test 2-->
 
 
   	<div class="container" style="background-color:gray;">
@@ -38,7 +54,8 @@
   	<script src="js/BootSideMenu.js"></script>
 
     <script type="text/javascript">
-      $('#test').BootSideMenu({side:"right"});
+      $('#test').BootSideMenu({side:"left", autoClose:false});
+      $('#test2').BootSideMenu({side:"right", autoClose:true});
     </script>
 
 </body>

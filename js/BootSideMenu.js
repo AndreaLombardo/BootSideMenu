@@ -8,9 +8,11 @@
 
         var settings = $.extend({
         	side:"left",
+        	autoClose:true
         }, options );
 
         side = settings.side;
+        autoClose = settings.autoClose;
 
         this.addClass("container sidebar");
 
@@ -32,6 +34,10 @@
         newCode += "</div>\n";
 
         this.html(newCode);
+
+    	if(autoClose){
+    		$(this).find(".toggler").trigger("click");
+    	}
 
     };
 
