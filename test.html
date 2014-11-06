@@ -18,27 +18,14 @@
       <![endif]-->
   </head>
   <body>
-  	<!--Test Sinistro-->
-  	<div class="container sidebar sidebar-left">
-  		<div class="row">
-  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg1-12">
-  				contenuto left
-  			</div>
-  		</div>
-  		<div class="toggler"><span class="glyphicon glyphicon-chevron-right">&nbsp;</span> <span class="glyphicon glyphicon-chevron-left">&nbsp;</span></div>
-  	</div>
-  	<!--/Test Sinistro-->
 
-  	<!--Test Destro-->
-  	<div class="container sidebar sidebar-right">
-  		<div class="row">
-  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg1-12">
-  				contenuto right
-  			</div>
-  		</div>
-  		<div class="toggler"><span class="glyphicon glyphicon-chevron-left">&nbsp;</span><span class="glyphicon glyphicon-chevron-right">&nbsp;</span></div>
+  	<!--Test -->
+  	<div id="test">
+      <a href="ciao ciao">ciao ciao</a>
   	</div>
-  	<!--/Test Destro-->
+  	<!--/Test -->
+
+
   	<div class="container" style="background-color:gray;">
   		<div class="row" style="background-color:red;">
   			<div class="col-md-12" style="background-color:green;"><h1>Nano Test!</h1></div>
@@ -49,6 +36,10 @@
   	<script src="js/jquery-1.11.1.min.js"></script>
   	<script src="js/bootstrap.min.js"></script>
   	<script src="js/BootSideMenu.js"></script>
+
+    <script type="text/javascript">
+      $('#test').BootSideMenu({side:"right"});
+    </script>
 
 </body>
 </html>

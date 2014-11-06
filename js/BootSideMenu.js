@@ -1,15 +1,56 @@
-  		$(document).on('click', '.toggler', function(){
-  			var toggler = $(this);
-  			var container = toggler.parent();
-  			var listaClassi = container[0].classList;
-  			var side = getSide(listaClassi);
-  			var containerWidth = container.width();
-  			var status = container.attr('data-status');
-  			if(!status){
-  				status = "opened";
-  			}
-  			doAnimation(container, containerWidth, side, status);
-  		});
+(function ( $ ) {
+
+	$.fn.BootSideMenu = function( options ) {
+
+		var oldCode, newCode, side;
+
+		newCode = "";
+
+        var settings = $.extend({
+        	side:"left",
+        }, options );
+
+        side = settings.side;
+
+        this.addClass("container sidebar");
+
+        if(side=="left"){
+        	this.addClass("sidebar-left");
+        }else if(side=="right"){
+        	this.addClass("sidebar-right");
+        }else{
+        	this.addClass("sidebar-left");	
+        }
+
+        oldCode = this.html();
+
+        newCode += "<div class=\"row\">\n";
+        newCode += "	<div class=\"col-xs-12 col-sm-12 col-md-12 col-lg1-12\">\n"+ oldCode+" </div>\n";
+        newCode += "</div>";
+        newCode += "<div class=\"toggler\">\n";
+        newCode += "	<span class=\"glyphicon glyphicon-chevron-right\">&nbsp;</span> <span class=\"glyphicon glyphicon-chevron-left\">&nbsp;</span>\n";
+        newCode += "</div>\n";
+
+        this.html(newCode);
+
+        
+
+        console.log(side);
+
+    };
+
+    $(document).on('click','.toggler', function(){
+    	var toggler = $(this);
+    	var container = toggler.parent();
+    	var listaClassi = container[0].classList;
+    	var side = getSide(listaClassi);
+    	var containerWidth = container.width();
+    	var status = container.attr('data-status');
+    	if(!status){
+    		status = "opened";
+    	}
+    	doAnimation(container, containerWidth, side, status);
+    });
 
 		//restituisce il lato del sidebar in base alla classe che trova settata
 		function getSide(listaClassi){
@@ -69,4 +110,7 @@
 				$(toggler).children(".glyphicon-chevron-left").css('display', 'block');
 				$(toggler).children(".glyphicon-chevron-right").css('display', 'none');
 			}
-		}
+		}   
+
+	}( jQuery ));
+
