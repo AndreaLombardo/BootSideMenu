@@ -1,3 +1,20 @@
 BootSideMenu
 ============
-Plugin jQuery per realizzare un menu laterale a scomparsa al gusto di Bootstrap. Sono ben accetti collaboratori.
+<p>Plugin jQuery per realizzare un menu laterale a scomparsa al gusto di Bootstrap.<br/>Sono ben accetti collaboratori.</p>
+<p align="center"><strong>*.*.* Il plugin non è ancora ultimato *.*.*</strong></p>
+
+HOW TO
+============
+
+HTML
+-----------
+```html
+<div id="idelemento">
+  ... link del menù...
+</div>
+```
+JavaScript
+-----------
+```JavaScript
+$("#idelemento").BootSideMenu();
+```
