@@ -22,6 +22,18 @@
     margin-bottom: 5px;
   }
 </style>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/AndreaLombardo/BootSideMenu/master/js/BootSideMenu.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+      $('#test').BootSideMenu({side:"left", autoClose:false});
+      $('#test2').BootSideMenu({side:"right"});
+  });
+  </script>
+
 </head>
 <body>
 
@@ -174,14 +186,6 @@
   </div>
   <!--Normale contenuto di pagina-->
 
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script src="js/BootSideMenu.js"></script>
-
-  <script type="text/javascript">
-    $('#test').BootSideMenu({side:"left", autoClose:false});
-    $('#test2').BootSideMenu({side:"right"});
-  </script>
 
 </body>
 </html>
