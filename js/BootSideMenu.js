@@ -33,7 +33,20 @@
 		newCode += "	<span class=\"glyphicon glyphicon-chevron-right\">&nbsp;</span> <span class=\"glyphicon glyphicon-chevron-left\">&nbsp;</span>\n";
 		newCode += "</div>\n";
 
-		this.html(newCode);
+		//Mod suggested by asingh3
+		//https://github.com/AndreaLombardo/BootSideMenu/issues/1
+		
+		//this.html(newCode);
+	
+    		var wrapper = $(newCode);
+		// copy the children to the wrapper.
+		$.each(this.children(), function () {
+			$('.panel-content', wrapper).append(this);
+		});
+
+		// Empty the element and then append the wrapper code.
+		$(this).empty();
+		$(this).append(wrapper);
 
 		if(autoClose){
 			$(this).find(".toggler").trigger("click");
