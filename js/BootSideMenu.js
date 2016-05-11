@@ -183,5 +183,25 @@ function toggleArrow(toggler, side){
 	}
 }
 
+function onWindowResize() {
+	 $(".toggler").each( function(){
+		var container = $(this).parent();
+		var listaClassi = $(container[0]).attr('class').split(/\s+/); 
+		var side = getSide(listaClassi);
+		
+		var status = container.attr('data-status');
+		var containerWidth = container.width();
+		if (status==="closed") {
+			if(side=="left"){
+				container.css("left",-(containerWidth+2))
+
+			}else if(side=="right"){
+				container.css("right",-(containerWidth+2))
+
+			}
+		}
+	})
+}
+window.addEventListener('resize', onWindowResize, false);
 }( jQuery ));
 
