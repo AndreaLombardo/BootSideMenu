@@ -1,0 +1,29 @@
+{
+  "name": "boot-side-menu",
+  "version": "1.0.0",
+  "description": "A jQuery plugin to easily create a sliding menu, working on a Bootstrap based application.",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaLombardo/BootSideMenu.git"
+  },
+  "keywords": [
+    "jquery",
+    "bootstrap",
+    "menu",
+    "slide"
+  ],
+  "dependencies":{
+  	"jquery":"<=3",
+  	"bootstrap":"<=3.3.7"
+  },
+  "author":{
+  	"name":"Andrea Lombardo",
+	"url":"http://www.lombardoandrea.com"
+	},
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/AndreaLombardo/BootSideMenu/issues"
+    },
+  "homepage": "https://github.com/AndreaLombardo/BootSideMenu#readme"
+}

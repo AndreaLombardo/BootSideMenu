@@ -4,19 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Test</title>
+    <title>Set width</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/BootSideMenu.css">
 
     <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style type="text/css">
+        .user {
+            padding: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+    </style>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/BootSideMenu.js"></script>
+
 </head>
 <body>
 
@@ -37,7 +47,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html"><span class="fa fa-home"></span> Home</a></li>
+                    <li class="active"><a href="../index.html"><span class="fa fa-home"></span> Home</a></li>
                     <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span class="fa fa-code"></span> Examples</a></li>
                     <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span class="fa fa-paypal"></span> Donation</a></li>
                     <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span> Twitter</a></li>
@@ -71,34 +81,22 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-share-alt"></span> Share your experience</div>
+                <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
-                    <p class="lead">Those who send me the link of the website in which you will use this plugin, will be mentioned in the <u>future</u> section "<a
-                            href="#">Used
-                        by</a>"</p>
+                    <p class="lead">The menu will appear on the left.</p>
+                <pre>$(document).ready(function () {
+    $('#test').BootSideMenu({
+        side: "left",
+        pushBody:false,
+        width: '360px'
+    });
+});</pre>
+                    <p class="lead"> By default when you click a menu's item it will close automatically. To change this feature use the option:</p>
+                    <pre>closeOnClick:false</pre>
+                    <p>Watch this changes in the <a href="5-close-on-click.html">next example</a>.</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-list"></span> Examples</div>
-                <div class="panel-body">
-                    <p class="lead">All examples uses <a href="examples/0-menu-template.html">this</a> template for the HTML code.</p>
-
-                    <p>Watch some examples!</p>
-                </div>
-                <ul class="list-group">
-                    <a href="examples/1-simple-left.html" class="list-group-item">Simple left</a>
-                    <a href="examples/2-simple-right.html" class="list-group-item">Simple right</a>
-                    <a href="examples/3-duration.html" class="list-group-item">Define duration</a>
-                    <a href="examples/4-width.html" class="list-group-item">Custom width</a>
-                    <a href="examples/5-close-on-click.html" class="list-group-item">Don't close on click</a>
-                    <a href="examples/6-events.html" class="list-group-item">Events</a>
-                    <a href="examples/7-on-toggler-click.html" class="list-group-item">On Arrow Click</a>
-                </ul>
             </div>
         </div>
 
@@ -109,7 +107,7 @@
                     <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.</p>
 
                     <p class="text-center">
-                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" target="_blank"><img src="img/paypal_coffee.png"
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" target="_blank"><img src="../img/paypal_coffee.png"
                                                                                                                                           style="border: 0"></a></p>
 
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
@@ -123,8 +121,78 @@
             </div>
         </div>
 
-
     </div>
 </div>
+
+<!--Test -->
+<div id="test">
+    <div class="user">
+        <img src="../img/avatar.png" alt="Esempio" class="img-thumbnail"><br>
+        <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
+    </div>
+
+    <div class="list-group">
+
+        <a href="#item-1" class="list-group-item" data-toggle="collapse">Item 1</a>
+
+        <div class="list-group collapse" id="item-1">
+            <a href="#" class="list-group-item">Item 1 di 1</a>
+            <a href="#" class="list-group-item">Item 2 di 1</a>
+            <a href="#item-1-1" class="list-group-item" data-toggle="collapse">Item 3 di 1</a>
+
+            <div class="list-group collapse" id="item-1-1">
+                <a href="#" class="list-group-item">Item 1 di 1.3</a>
+                <a href="#" class="list-group-item">Item 2 di 1.3</a>
+                <a href="#" class="list-group-item">Item 3 di 1.3</a>
+            </div>
+
+        </div>
+
+        <a href="#item-2" class="list-group-item" data-toggle="collapse">Item 2</a>
+
+        <div class="list-group collapse" id="item-2">
+            <a href="#" class="list-group-item">Item 1 di 2</a>
+            <a href="#" class="list-group-item">Item 2 di 2</a>
+            <a href="#" class="list-group-item">Item 3 di 2</a>
+        </div>
+
+        <a href="#item-3" class="list-group-item" data-toggle="collapse">Item 3</a>
+
+        <div class="list-group collapse" id="item-3">
+            <a href="#" class="list-group-item">Item 1 di 3</a>
+            <a href="#" class="list-group-item">Item 2 di 3</a>
+            <a href="#item-3-1" class="list-group-item" data-toggle="collapse">Item 3 di 3</a>
+
+            <div class="list-group collapse" id="item-3-1">
+                <a href="#" class="list-group-item">Item 1 di 3.3</a>
+                <a href="#" class="list-group-item">Item 2 di 3.3</a>
+                <a href="#" class="list-group-item">Item 3 di 3.3</a>
+            </div>
+
+        </div>
+
+        <a href="#item-4" class="list-group-item" data-toggle="collapse">Item 4</a>
+
+        <div class="list-group collapse" id="item-4">
+            <a href="#" class="list-group-item">Item 1 di 4</a>
+            <a href="#" class="list-group-item">Item 2 di 4</a>
+            <a href="#" class="list-group-item">Item 3 di 4</a>
+        </div>
+
+    </div>
+
+</div>
+<!--/Test -->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#test').BootSideMenu({
+            side: "left",
+            pushBody:false,
+            width: '360px'
+        });
+    });
+</script>
 </body>
 </html>

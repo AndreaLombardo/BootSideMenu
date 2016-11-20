@@ -1,60 +1,33 @@
-BootSideMenu
-============
-<p>Plugin jQuery per realizzare un menu laterale a scomparsa al gusto di Bootstrap.<br/>Sono ben accetti collaboratori.</p>
-<p align="center"><strong>*.*.* Il plugin non è ancora ultimato *.*.*</strong></p>
+#BootSlideMenu
+After a long time a new (hope better) version is here.
+***BootSlideMenu*** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
 
-HOW TO
-============
+[TOC]
 
-HTML
------------
-```html
-<div id="idelemento">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">Cras justo odio</a>
-      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-      <a href="#subTest" class="list-group-item">Sub menù test</a>
-      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta Porta Porta sdaf s fs hfuis uif ac consectetur ac</a>
-      <a href="#" class="list-group-item">Vestibulum at eros</a>
-      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item">Morbi leo risus</a>
-      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    </div>
-</div>
-```
-JavaScript
------------
-```JavaScript
-$("#idelemento").BootSideMenu();
-```
-Il plugin accetta due parametri opzionali
+----------
 
-```JavaScript
-side : 'left' // o 'right'
-```
-Specifica il lato della pagina nel quale verrà realizzato il menu. Di default è <b>left</b> (a sinistra).
+###**Options**
+| Option     | Type | Value | Description|Default
+| :--------- | :--- | :---- | :--------- |:------:
+| **side**|String|left or right|Where menu will be placed|*left*
+| **duration**|Integer|milliseconds|Animation duration|*500*
+| **remember**|Boolean|true or false|Restore last menu status on page refresh|*true*
+|**autoClose**|Boolean|true or false|If true the initial status will be "closed"|false
+|**pushBody**|Boolean|true or false|If true the body of the page will be pushed left or right, according to the menù width and position|false
+|**closeOnClick**|Boolean|true or false|If true the menu will be closed when a link is clicked|true
 
-```JavaScript
-autoClose : true // o false
-```
-Determina se il menu dovrà essere chiuso automaticamente all'apertura della pagina. Di default è <b>true</b>.
+###**Events**
+| Event | Description | Default
+| :---- | :---------- | :------
+|**onTogglerClick**|A function to be executed when the toggler arrow is clicked| do nothing
+|**onBeforeOpen**|A function to be executed before the menu is opened| do nothing
+|**onOpen**|A function to be executed when the menu is opened| do nothing
+|**onBeforeClose**|A function to be executed before the menu is closed| do nothing
+|**onClose**|A function to be executed when the menu is closed| do nothing
 
-Esempi
------------
-```JavaScript
-$("#idelemento").BootSideMenu({side:'left'});
-```
-il menù verrà creato a sinistra della pagina e al caricamento della stessa, esso verà chiuso.
+##Examples
+Watch the examples folder to see it in actions
 
-```JavaScript
-$("#idelemento").BootSideMenu({
-	side:'right',
-	autoClose:false
-});
-```
-il menù verrà creato a destra della pagina e al caricamento della stessa, esso <b>non</b> verà chiuso.
+##Donations
+If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.
+:coffee: [PayPal Donations Here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE) :coffee:

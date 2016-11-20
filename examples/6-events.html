@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/BootSideMenu.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        .user {
+            padding: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/BootSideMenu.js"></script>
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">BootSideMenu</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="../index.html"><span class="fa fa-home"></span> Home</a></li>
+                    <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span class="fa fa-code"></span> Examples</a></li>
+                    <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span class="fa fa-paypal"></span> Donation</a></li>
+                    <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span> Twitter</a></li>
+                    <li><a href="https://github.com/AndreaLombardo/" target="_blank"><span class="fa fa-github"></span> Github</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://github.com/AndreaLombardo/BootSideMenu/">Github</a></li>
+                            <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE">Donation</a></li>
+                            <li><a href="http://www.lombardoandrea.com">My Site</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>BootSideMenu</h1>
+
+        <p>A jQuery plugin to easily create a sliding menu, working on a Bootstrap based application.</p>
+
+        <p>
+            <a class="btn btn-lg btn-warning" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" role="button"><span
+                    class="fa fa-paypal"></span> Thanks</a>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
+                <div class="panel-body">
+                    <p class="lead">There are two menu in the page. Left menu call its action when start to move, right menu will call function when movements end.</p>
+                <pre>$(document).ready(function () {
+    $('#test').BootSideMenu({
+        side: "left",
+        closeOnClick: false
+    });
+});</pre>
+                    <p class="lead">There are some interesting events you can use with your menu</p>
+    <pre>$(document).ready(function () {
+
+    //left menu
+    $('#test-left').BootSideMenu({
+        side: "left",
+        onBeforeOpen: function () {
+            alert('Menu will open soon');
+        },
+        onBeforeClose: function () {
+            alert('Menu will close soon');
+        }
+    });
+
+    //right menu
+    $('#test-right').BootSideMenu({
+        side: "right",
+        pushBody: false,
+        onOpen: function () {
+            alert('Menu is opened');
+        },
+        onClose: function () {
+            alert('Menu is closed');
+        }
+    });
+});</pre>
+                    <p>There is another event. Watch it in the <a href="7-on-toggler-click.html">next example</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="fa fa-paypal"></span> A courtesy coffee?</div>
+                <div class="panel-body">
+                    <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.</p>
+
+                    <p class="text-center">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" target="_blank"><img src="../img/paypal_coffee.png"
+                                                                                                                                          style="border: 0"></a></p>
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="DUNFGKA32BFGE">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit"
+                               alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Test left-->
+<div id="test-left">
+    <div class="user">
+        <img src="../img/avatar.png" alt="Esempio" class="img-thumbnail"><br>
+        <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
+    </div>
+
+    <div class="list-group">
+
+        <a href="#item-1" class="list-group-item" data-toggle="collapse">Item 1</a>
+
+        <div class="list-group collapse" id="item-1">
+            <a href="#" class="list-group-item">Item 1 di 1</a>
+            <a href="#" class="list-group-item">Item 2 di 1</a>
+            <a href="#item-1-1" class="list-group-item" data-toggle="collapse">Item 3 di 1</a>
+
+            <div class="list-group collapse" id="item-1-1">
+                <a href="#" class="list-group-item">Item 1 di 1.3</a>
+                <a href="#" class="list-group-item">Item 2 di 1.3</a>
+                <a href="#" class="list-group-item">Item 3 di 1.3</a>
+            </div>
+
+        </div>
+
+        <a href="#item-2" class="list-group-item" data-toggle="collapse">Item 2</a>
+
+        <div class="list-group collapse" id="item-2">
+            <a href="#" class="list-group-item">Item 1 di 2</a>
+            <a href="#" class="list-group-item">Item 2 di 2</a>
+            <a href="#" class="list-group-item">Item 3 di 2</a>
+        </div>
+
+        <a href="#item-3" class="list-group-item" data-toggle="collapse">Item 3</a>
+
+        <div class="list-group collapse" id="item-3">
+            <a href="#" class="list-group-item">Item 1 di 3</a>
+            <a href="#" class="list-group-item">Item 2 di 3</a>
+            <a href="#item-3-1" class="list-group-item" data-toggle="collapse">Item 3 di 3</a>
+
+            <div class="list-group collapse" id="item-3-1">
+                <a href="#" class="list-group-item">Item 1 di 3.3</a>
+                <a href="#" class="list-group-item">Item 2 di 3.3</a>
+                <a href="#" class="list-group-item">Item 3 di 3.3</a>
+            </div>
+
+        </div>
+
+        <a href="#item-4" class="list-group-item" data-toggle="collapse">Item 4</a>
+
+        <div class="list-group collapse" id="item-4">
+            <a href="#" class="list-group-item">Item 1 di 4</a>
+            <a href="#" class="list-group-item">Item 2 di 4</a>
+            <a href="#" class="list-group-item">Item 3 di 4</a>
+        </div>
+
+    </div>
+
+</div>
+<!--/Test left-->
+
+
+<!--Test right -->
+<div id="test-right">
+    <div class="user">
+        <img src="../img/avatar.png" alt="Esempio" class="img-thumbnail"><br>
+        <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
+    </div>
+
+    <div class="list-group">
+
+        <a href="#right-item-1" class="list-group-item" data-toggle="collapse">Item 1</a>
+
+        <div class="list-group collapse" id="right-item-1">
+            <a href="#" class="list-group-item">Item 1 di 1</a>
+            <a href="#" class="list-group-item">Item 2 di 1</a>
+            <a href="#right-item-1-1" class="list-group-item" data-toggle="collapse">Item 3 di 1</a>
+
+            <div class="list-group collapse" id="right-item-1-1">
+                <a href="#" class="list-group-item">Item 1 di 1.3</a>
+                <a href="#" class="list-group-item">Item 2 di 1.3</a>
+                <a href="#" class="list-group-item">Item 3 di 1.3</a>
+            </div>
+
+        </div>
+
+        <a href="#right-item-2" class="list-group-item" data-toggle="collapse">Item 2</a>
+
+        <div class="list-group collapse" id="right-item-2">
+            <a href="#" class="list-group-item">Item 1 di 2</a>
+            <a href="#" class="list-group-item">Item 2 di 2</a>
+            <a href="#" class="list-group-item">Item 3 di 2</a>
+        </div>
+
+        <a href="#right-item-3" class="list-group-item" data-toggle="collapse">Item 3</a>
+
+        <div class="list-group collapse" id="right-item-3">
+            <a href="#" class="list-group-item">Item 1 di 3</a>
+            <a href="#" class="list-group-item">Item 2 di 3</a>
+            <a href="#right-item-3-1" class="list-group-item" data-toggle="collapse">Item 3 di 3</a>
+
+            <div class="list-group collapse" id="right-item-3-1">
+                <a href="#" class="list-group-item">Item 1 di 3.3</a>
+                <a href="#" class="list-group-item">Item 2 di 3.3</a>
+                <a href="#" class="list-group-item">Item 3 di 3.3</a>
+            </div>
+
+        </div>
+
+        <a href="#right-item-4" class="list-group-item" data-toggle="collapse">Item 4</a>
+
+        <div class="list-group collapse" id="right-item-4">
+            <a href="#" class="list-group-item">Item 1 di 4</a>
+            <a href="#" class="list-group-item">Item 2 di 4</a>
+            <a href="#" class="list-group-item">Item 3 di 4</a>
+        </div>
+
+    </div>
+
+</div>
+<!--/Test right-->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //left menu
+        $('#test-left').BootSideMenu({
+            side: "left",
+            onBeforeOpen: function () {
+                alert('Menu will open soon');
+            },
+            onBeforeClose: function () {
+                alert('Menu will close soon');
+            }
+        });
+
+        //right menu
+        $('#test-right').BootSideMenu({
+            side: "right",
+            pushBody: false,
+            onOpen: function () {
+                alert('Menu is opened');
+            },
+            onClose: function () {
+                alert('Menu is closed');
+            }
+        });
+    });
+</script>
+</body>
+</html>
