@@ -1,6 +1,6 @@
-#BootSlideMenu
+#BootSideMenu
 After a long time a new (hope better) version is here.
-***BootSlideMenu*** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
+***BootSideMenu*** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
 
 Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/index.html)
 
@@ -13,7 +13,7 @@ Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/
 | **duration**|Integer|milliseconds|Animation duration|*500*
 | **remember**|Boolean|true or false|Restore last menu status on page refresh|*true*
 |**autoClose**|Boolean|true or false|If true the initial status will be "closed"|false
-|**pushBody**|Boolean|true or false|If true the body of the page will be pushed left or right, according to the menù width and position|false
+|**pushBody**|Boolean|true or false|If true the body of the page will be pushed left or right, according to the menu width and position|false
 |**closeOnClick**|Boolean|true or false|If true the menu will be closed when a link is clicked|true
 
 ###**Events**
