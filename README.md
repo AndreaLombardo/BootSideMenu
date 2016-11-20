@@ -2,7 +2,7 @@
 After a long time a new (hope better) version is here.
 ***BootSlideMenu*** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
 
-[TOC]
+Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/index.html)
 
 ----------
 
