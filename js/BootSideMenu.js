@@ -51,9 +51,7 @@
 
         initialCode = this.html();
 
-        newCode = "<div class=\"row\">";
-        newCode += "	<div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n" + initialCode + " </div>";
-        newCode += "</div>";
+        newCode = "	<div class=\"menu-wrapper\">\n" + initialCode + " </div>";
         newCode += "<div class=\"toggler\" data-whois=\"toggler\">";
         newCode += "	<span class=\"glyphicon\">&nbsp;</span>";
         newCode += "</div>";
@@ -62,22 +60,22 @@
         this.append(newCode);
 
         menu = $(this);
-
+		
         menu.addClass("container");
-        menu.addClass("sidebar");
+        menu.addClass("bootsidemenu");
         menu.css("width", options.width);
 
         if (options.side == "left") {
-            menu.addClass("sidebar-left");
+            menu.addClass("bootsidemenu-left");
         } else if (options.side == "right") {
-            menu.addClass("sidebar-right");
+            menu.addClass("bootsidemenu-right");
         }
 
         menu.id = menu.attr("id");
         menu.cookieName = "bsm2-" + menu.id;
         menu.toggler = $(menu.children()[1]);
-        menu.originalWidth = menu.width();
         menu.originalPushBody = options.pushBody;
+		menu.originalCloseOnClick = options.closeOnClick;
 
 
         if (options.remember) {
@@ -85,8 +83,9 @@
         } else {
             prevStatus = null;
         }
-
-        forSmallBody();
+		
+		
+		forSmallBody();
 
         switch (prevStatus) {
             case "opened":
@@ -104,7 +103,6 @@
             options.onStartup(menu);
         }
 
-        //aggiungi icone a tutti i collapse
         $("[data-toggle=\"collapse\"]", menu).each(function () {
             var icona = $("<span class=\"glyphicon glyphicon-chevron-right\"></span>");
             $(this).prepend(icona);
@@ -137,6 +135,7 @@
             }
         });
 
+		
 
         function toggle() {
             if (menu.status == "opened") {
@@ -229,7 +228,6 @@
         }
 
         function closeMenu(execFunctions) {
-
             if (execFunctions) {
                 if (options.onBeforeClose !== undefined) {
                     options.onBeforeClose(menu);
@@ -344,12 +342,15 @@
 
 
         function forSmallBody() {
-            var bodyWidth = $("body").width();
-            if (bodyWidth <= 480) {
+           var windowWidth = $(window).width();
+         	
+           if (windowWidth <= 480) {
                 options.pushBody = false;
                 options.closeOnClick = true;
-                menu.css("width", "90%");
-            }
+            } else{
+				options.pushBody = menu.originalPushBody;
+                options.closeOnClick = menu.originalCloseOnClick;
+			} 
         }
 
         function storeCookie(nome, valore) {
@@ -373,8 +374,6 @@
 
 
         function onResize() {
-            menu.width(options.width);
-
             forSmallBody();
             if (menu.status == "closed") {
                 startClosed();
