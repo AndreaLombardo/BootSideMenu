@@ -1,10 +1,9 @@
-.sidebar {
+.bootsidemenu {
     z-index: 999999;
     position: fixed;
     top: -1px;
     bottom: -1px;
     padding: 0;
-    width: auto;
     background-color: #fff;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
@@ -13,30 +12,32 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 
-.sidebar > .row > .col-xs-12, .sidebar > .row > .col-sm-12, .sidebar > .row > .col-md-12, .sidebar > .row > .col-lg-12 {
+.bootsidemenu > .menu-wrapper {
     padding: 0;
     position: absolute;
     bottom: 0;
     top: 0;
     overflow: auto;
+	width: 100%;
 }
 
-.sidebar > .row {
+.bootsidemenu > .row {
     margin: 0;
 }
 
-.sidebar {
-    width: auto;
+.bootsidemenu {
+    /*width: auto;*/
+	min-width: auto;
 }
 
-.sidebar.sidebar-left {
+.bootsidemenu.bootsidemenu-left {
     left: 0;
-    right: 20px;
+    right: auto;/*20px;*/
 }
 
-.sidebar.sidebar-right {
+.bootsidemenu.bootsidemenu-right {
     right: 0;
-    left: 20px;
+    left: auto;/*20px;*/
 }
 
 
@@ -49,9 +50,10 @@
     position: absolute;
     top: 47%;
     cursor: pointer;
+	background-color: #fff;
 }
 
-.sidebar-left > .toggler {
+.bootsidemenu-left > .toggler {
     -webkit-border-top-right-radius: 4px;
     -webkit-border-bottom-right-radius: 4px;
     -moz-border-radius-topright: 4px;
@@ -64,11 +66,11 @@
     right: -20px;
 }
 
-.sidebar-left > .toggler > span {
+.bootsidemenu-left > .toggler > span {
     margin: 15px 2px;
 }
 
-.sidebar-right > .toggler {
+.bootsidemenu-right > .toggler {
     -webkit-border-top-left-radius: 4px;
     -webkit-border-bottom-left-radius: 4px;
     -moz-border-radius-topleft: 4px;
@@ -81,20 +83,20 @@
     left: -20px;
 }
 
-.sidebar-right > .toggler > span {
+.bootsidemenu-right > .toggler > span {
     margin: 15px 2px;
 }
 
 /*Native BootStrap Hack*/
-.sidebar .list-group-item:last-child, .sidebar .list-group-item:first-child {
+.bootsidemenu .list-group-item:last-child, .bootsidemenu .list-group-item:first-child {
     border-radius: 0;
 }
 
-.sidebar .list-group {
+.bootsidemenu .list-group {
     margin-bottom: 0;
 }
 
-.sidebar .list-group-item {
+.bootsidemenu .list-group-item {
     border: 1px solid #DDD;
     border-left: 0;
     border-right: 0;
@@ -111,83 +113,61 @@
 }
 
 
+/*==========  Media queries for test ==========*/
 
-@media (min-width: 400px) {
-    .sidebar {
-        width: 80%;
-    }
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
 
-    .sidebar.sidebar-left {
-        left: 0;
-        right: auto;
-    }
+}
 
-    .sidebar.sidebar-right {
-        right: 0;
-        left: auto;
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .bootsidemenu {
+        min-width: 200px;
     }
 }
 
-@media (min-width: 528px) {
-    .sidebar {
-        width: 300px;
-    }
-
-    .sidebar.sidebar-left {
-        left: 0;
-        right: auto;
-    }
-
-    .sidebar.sidebar-right {
-        right: 0;
-        left: auto;
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .bootsidemenu {
+        min-width: 90%;
     }
 }
 
-@media (min-width: 768px) {
-    .sidebar {
-        width: 230px;
-    }
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
 
-    .sidebar.sidebar-left {
-        left: 0;
-        right: auto;
-    }
-
-    .sidebar.sidebar-right {
-        right: 0;
-        left: auto;
-    }
-}
-
-@media (min-width: 992px) {
-    .sidebar {
-        width: 230px;
-    }
-
-    .sidebar.sidebar-left {
-        left: 0;
-        right: auto;
-    }
-
-    .sidebar.sidebar-right {
-        right: 0;
-        left: auto;
-    }
-}
-
-@media (min-width: 1200px) {
-    .sidebar {
-        width: 230px;
-    }
-
-    .sidebar.sidebar-left {
-        left: 0;
-        right: auto;
-    }
-
-    .sidebar.sidebar-right {
-        right: 0;
-        left: auto;
-    }
 }
