@@ -27,7 +27,7 @@
 
 .bootsidemenu {
     /*width: auto;*/
-	min-width: auto;
+	min-width: unset;
 }
 
 .bootsidemenu.bootsidemenu-left {
