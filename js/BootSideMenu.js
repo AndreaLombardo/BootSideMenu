@@ -60,7 +60,7 @@
         this.append(newCode);
 
         menu = $(this);
-		
+
         menu.addClass("container");
         menu.addClass("bootsidemenu");
         menu.css("width", options.width);
@@ -75,7 +75,7 @@
         menu.cookieName = "bsm2-" + menu.id;
         menu.toggler = $(menu.children()[1]);
         menu.originalPushBody = options.pushBody;
-		menu.originalCloseOnClick = options.closeOnClick;
+        menu.originalCloseOnClick = options.closeOnClick;
 
 
         if (options.remember) {
@@ -83,9 +83,9 @@
         } else {
             prevStatus = null;
         }
-		
-		
-		forSmallBody();
+
+
+        forSmallBody();
 
         switch (prevStatus) {
             case "opened":
@@ -135,7 +135,6 @@
             }
         });
 
-		
 
         function toggle() {
             if (menu.status == "opened") {
@@ -342,15 +341,15 @@
 
 
         function forSmallBody() {
-           var windowWidth = $(window).width();
-         	
-           if (windowWidth <= 480) {
+            var windowWidth = $(window).width();
+
+            if (windowWidth <= 480) {
                 options.pushBody = false;
                 options.closeOnClick = true;
-            } else{
-				options.pushBody = menu.originalPushBody;
+            } else {
+                options.pushBody = menu.originalPushBody;
                 options.closeOnClick = menu.originalCloseOnClick;
-			} 
+            }
         }
 
         function storeCookie(nome, valore) {
