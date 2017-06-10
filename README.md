@@ -29,5 +29,5 @@ Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/
 Watch the examples folder to see it in actions
 
 ## Donations
-If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.
+Coffees are accepted!
 :coffee: [PayPal Donations Here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE) :coffee:
