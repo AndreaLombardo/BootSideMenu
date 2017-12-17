@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Set duration</title>
+    <title>Use custom icon font</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,25 +43,34 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
-                    <p class="lead">The menu is on the left. Moving tooks 2 seconds.</p>
+                    <p class="lead">The menu will appear on the left with new set of arrows.</p>
                     <pre>$(document).ready(function () {
     $('#test').BootSideMenu({
-        side: "left",
-        pushBody: false,
-        duration:2000
+        side: 'left',
+        icons:{
+            left:'fa fa-arrow-left',
+            right:'fa fa-arrow-right',
+            down:'fa fa-arrow-down'
+        }
     });
 });</pre>
-                    <p class="lead"> By default the menu is large as the 15% of the page. To change this feature use the
-                        option:</p>
-                    <pre>width:'300px' //or '20%'</pre>
-                    <small>You can use percentage or measure unit.</small>
-                    <br/>
-                    <br/>
-                    <p>Watch this changes in the <a href="4-width.html">next example</a>.</p>
+                    <p class="lead">You need to embed Fontawesome (or whatever you want) library in your project:</p>
+                    <pre>
+icons:{
+    left:'fa fa-arrow-left',
+    right:'fa fa-arrow-right',
+    down:'fa fa-arrow-down'
+}
+                    </pre>
+
+
+                    <p>After changing the arrows icon, you may also need to change the color. Try one of the predefined
+                        themes or easily create
+                        your own. See the <a href="10-change-theme.html">example</a>.</p>
+
                 </div>
             </div>
         </div>
-
 
         <!--Right col-->
         <div class="col-md-4">
@@ -91,11 +100,13 @@
 
     function init() {
         $('#test').BootSideMenu({
-            side: "left",
-            pushBody: false,
-            duration: 1000
+            side: 'left',
+            icons: {
+                left: 'fa fa-arrow-left',
+                right: 'fa fa-arrow-right',
+                down: 'fa fa-arrow-down'
+            }
         });
     }
 </script>
 </body>
-</html>

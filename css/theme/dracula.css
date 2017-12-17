@@ -1,0 +1,48 @@
+/*==========  Theme Dracula ==========*/
+
+.dracula {
+    background-color: #282a36;
+    color: #f8f8f2;
+}
+
+.dracula .toggler {
+    background-color: #282a36;
+}
+
+.dracula a,
+.dracula a:hover,
+.dracula a:visited {
+    color: #6272a4;
+}
+
+.dracula.bootsidemenu-left,
+.dracula.bootsidemenu-right,
+.dracula.bootsidemenu-left > .toggler,
+.dracula.bootsidemenu-right > .toggler {
+    border-color: #44475a;
+}
+
+.dracula .list-group-item.active,
+.dracula .list-group-item.active:focus,
+.dracula .list-group-item.active:hover,
+.dracula .item.active:focus {
+    color: #44475a;
+    background-color: #ff5555;
+    border-color: #ff5555;
+}
+
+.dracula a.list-group-item {
+    color: #f8f8f2;
+}
+
+.dracula a.list-group-item:focus,
+.dracula a.list-group-item:hover,
+.dracula button.list-group-item:focus,
+.dracula button.list-group-item:hover {
+    color: #44475a;
+    text-decoration: none;
+    background-color: #ff5555;
+    border-color: #ff5555;
+}
+
+/*========== /Theme Dracula ==========*/

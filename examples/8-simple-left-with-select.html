@@ -29,78 +29,21 @@
 <div class="container">
 
     <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">BootSideMenu</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="../index.html"><span class="fa fa-home"></span> Home</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span
-                            class="fa fa-code"></span> Examples</a></li>
-                    <li>
-                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span
-                                class="fa fa-paypal"></span> Donation</a></li>
-                    <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span>
-                        Twitter</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/" target="_blank"><span class="fa fa-github"></span>
-                        Github</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">More <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://github.com/AndreaLombardo/BootSideMenu/">Github</a></li>
-                            <li>
-                                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE">Donation</a>
-                            </li>
-                            <li><a href="http://www.lombardoandrea.com">My Site</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-default" w3-include-html="inc/navbar.html"></nav>
+    <!-- /Static navbar -->
 
-    <div class="jumbotron">
-        <h1>BootSideMenu</h1>
+    <!-- Jumbotron -->
+    <div class="jumbotron" w3-include-html="inc/jumbotron.html"></div>
+    <!-- /Jumbotron -->
 
-        <p>A jQuery plugin to easily create a sliding menu, working on a Bootstrap based application.</p>
-
-        <p>
-            <a class="btn btn-lg btn-warning"
-               href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"
-               role="button"><span
-                    class="fa fa-paypal"></span> Thanks</a>
-        </p>
-    </div>
-
+    <!--Example content-->
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
-                    <p class="lead">The menu will appear on the left.</p>
-                    <pre>$(document).ready(function () {
-    $('#test').BootSideMenu({
-        side: "left"
-    });
-});</pre>
-                    <p class="lead"> This example is the same as the basic:</p>
-                    <pre>remember:false</pre>
-                    <pre>pushBody:false</pre>
-
-                    <p class="lead">Plus the addition of a selectbox under the user section.</p>
+                    <p class="lead">The menu is on the left and just to see how it's rendered I put a selectbox under
+                        the user picture</p>
                     <pre>
 &lt;div class="form-group" style="margin:10px 5px;"&gt;
     &lt;label&gt;My Selectbox&lt;/label&gt;
@@ -115,128 +58,53 @@
     &lt;/select&gt;
 &lt;/div&gt;
                     </pre>
+                    <p class="lead">Menu is instantiated as the <a href="1-simple-left.html">basic example</a>.</p>
+                    <pre>$(document).ready(function () {
+    $('#test').BootSideMenu({
+        side: "left"
+    });
+});</pre>
 
-                    <p>That's all for now. <a href="../index.html">Go back</a>!</p>
+
+                    <p>As a <a href="https://github.com/AndreaLombardo/BootSideMenu/issues/18">user request</a> I
+                        introduced a way to customize menù icons. See it in the <a href="9-change-arrows-font.html">next
+                            example</a>.</p>
 
                 </div>
             </div>
         </div>
 
+        <!--Right col-->
         <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-paypal"></span> A courtesy coffee?</div>
-                <div class="panel-body">
-                    <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very
-                        satisfied.</p>
-
-                    <p class="text-center">
-                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"
-                           target="_blank"><img src="../img/paypal_coffee.png"
-                                                style="border: 0"></a></p>
-
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
-                          class="text-center">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="DUNFGKA32BFGE">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif"
-                               border="0" name="submit"
-                               alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
-                             height="1">
-                    </form>
-                </div>
-            </div>
+            <div w3-include-html="inc/right-content.html"></div>
+            <div w3-include-html="inc/example-list.html"></div>
         </div>
+        <!--/Right col-->
 
     </div>
 </div>
 
 <!--Test -->
-<div id="test">
-    <div class="user">
-        <img src="../img/avatar.png" alt="Esempio" class="img-thumbnail"><br>
-        <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
-    </div>
-
-    <div class="form-group" style="margin:10px 5px;">
-        <label>My Selectbox</label>
-        <select class="chosen-select form-control" data-val="true"
-                data-val-number="The field Diam Quality must be a number." data-val-required="Diam Quality ID is must"
-                id="DiamQualityID" name="DiamQualityID">
-            <option value="">Select Diam Quality</option>
-            <option value="1">SIGHI</option>
-            <option value="2">I1GHI</option>
-            <option value="3">SIJK</option>
-            <option value="4">VSGHI</option>
-            <option value="5">VVSGHI</option>
-            <option value="6">VVSDEF</option>
-        </select>
-    </div>
-
-    <div class="list-group">
-
-        <a href="#item-1" class="list-group-item" data-toggle="collapse">Item 1</a>
-
-        <div class="list-group collapse" id="item-1">
-            <a href="#" class="list-group-item">Item 1 di 1</a>
-            <a href="#" class="list-group-item">Item 2 di 1</a>
-            <a href="#item-1-1" class="list-group-item" data-toggle="collapse">Item 3 di 1</a>
-
-            <div class="list-group collapse" id="item-1-1">
-                <a href="#" class="list-group-item">Item 1 di 1.3</a>
-                <a href="#" class="list-group-item">Item 2 di 1.3</a>
-                <a href="#" class="list-group-item">Item 3 di 1.3</a>
-            </div>
-
-        </div>
-
-        <a href="#item-2" class="list-group-item" data-toggle="collapse">Item 2</a>
-
-        <div class="list-group collapse" id="item-2">
-            <a href="#" class="list-group-item">Item 1 di 2</a>
-            <a href="#" class="list-group-item">Item 2 di 2</a>
-            <a href="#" class="list-group-item">Item 3 di 2</a>
-        </div>
-
-        <a href="#item-3" class="list-group-item" data-toggle="collapse">Item 3</a>
-
-        <div class="list-group collapse" id="item-3">
-            <a href="#" class="list-group-item">Item 1 di 3</a>
-            <a href="#" class="list-group-item">Item 2 di 3</a>
-            <a href="#item-3-1" class="list-group-item" data-toggle="collapse">Item 3 di 3</a>
-
-            <div class="list-group collapse" id="item-3-1">
-                <a href="#" class="list-group-item">Item 1 di 3.3</a>
-                <a href="#" class="list-group-item">Item 2 di 3.3</a>
-                <a href="#" class="list-group-item">Item 3 di 3.3</a>
-            </div>
-
-        </div>
-
-        <a href="#item-4" class="list-group-item" data-toggle="collapse">Item 4</a>
-
-        <div class="list-group collapse" id="item-4">
-            <a href="#" class="list-group-item">Item 1 di 4</a>
-            <a href="#" class="list-group-item">Item 2 di 4</a>
-            <a href="#" class="list-group-item">Item 3 di 4</a>
-        </div>
-
-    </div>
-
-</div>
+<div id="test" w3-include-html="inc/menu-template-selectbox.html"></div>
 <!--/Test -->
 
+<script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src="../js/BootSideMenu.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
+        w3.includeHTML(init);
+    });
+
+    function init() {
         $('#test').BootSideMenu({
             side: "left"
         });
-    });
+    }
 </script>
 </body>
 </html>
