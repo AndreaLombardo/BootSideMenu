@@ -2,7 +2,7 @@
 After a long time a new (hope better) version is here.
 **BootSideMenu** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
 
-Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/index.html)
+Online demo can be found [HERE](https://andrealombardo.github.io/BootSideMenu/)
 
 ----------
 
@@ -29,7 +29,7 @@ Online demo can be found [HERE](http://www.lombardoandrea.com/demo/BootSideMenu/
 |**onClose**|A function to be executed when the menu is closed| do nothing
 
 ## Examples
-Watch the examples folder to see it in actions or try an [Online Demo](http://www.lombardoandrea.com/demo/BootSideMenu/index.html)
+Watch the examples folder to see it in actions or try an [Online Demo](https://andrealombardo.github.io/BootSideMenu/)
 
 ## Donations
 Coffee and beers are well accepted!
