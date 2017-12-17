@@ -1,5 +1,5 @@
 /**
- * BootSideMenu v 1.0
+ * BootSideMenu v 2.0
  * Author: Andrea Lombardo
  * http://www.lombardoandrea.com
  * https://github.com/AndreaLombardo/BootSideMenu
@@ -10,9 +10,11 @@
 
         var initialCode;
         var newCode;
-        var menu;
+        var $menu;
         var prevStatus;
-        var body = {};
+        var bodyProperties = {};
+
+        var $DOMBody = $("body", document);
 
         var defaults = {
             side: "left",
@@ -21,6 +23,12 @@
             autoClose: false,
             pushBody: true,
             closeOnClick: true,
+            icons: {
+                left: 'glyphicon glyphicon-chevron-left',
+                right: 'glyphicon glyphicon-chevron-right',
+                down: 'glyphicon glyphicon-chevron-down'
+            },
+            theme: '',
             width: "15%",
             onTogglerClick: function () {
                 //code to be executed when the toggler arrow was clicked
@@ -45,41 +53,42 @@
         var options = $.extend({}, defaults, userOptions);
 
 
-        body.originalMarginLeft = $("body").css("margin-left");
-        body.originalMarginRight = $("body").css("margin-right");
-        body.width = $("body").width();
+        bodyProperties['originalMarginLeft'] = $DOMBody.css("margin-left");
+        bodyProperties['originalMarginRight'] = $DOMBody.css("margin-right");
+        bodyProperties['width'] = $DOMBody.width();
 
         initialCode = this.html();
 
-        newCode = "	<div class=\"menu-wrapper\">\n" + initialCode + " </div>";
-        newCode += "<div class=\"toggler\" data-whois=\"toggler\">";
-        newCode += "	<span class=\"glyphicon\">&nbsp;</span>";
-        newCode += "</div>";
+        newCode = '<div class="menu-wrapper">' + initialCode + '</div>';
+        newCode += '<div class="toggler" data-whois="toggler">';
+        newCode += '<span class="icon">&nbsp;</span>';
+        newCode += '</div>';
 
         this.empty();
-        this.append(newCode);
+        this.html(newCode);
 
-        menu = $(this);
+        $menu = $(this);
 
-        menu.addClass("container");
-        menu.addClass("bootsidemenu");
-        menu.css("width", options.width);
+        $menu.addClass("container");
+        $menu.addClass("bootsidemenu");
+        $menu.addClass(options.theme);
+        $menu.css("width", options.width);
 
-        if (options.side == "left") {
-            menu.addClass("bootsidemenu-left");
-        } else if (options.side == "right") {
-            menu.addClass("bootsidemenu-right");
+        if (options.side === "left") {
+            $menu.addClass("bootsidemenu-left");
+        } else if (options.side === "right") {
+            $menu.addClass("bootsidemenu-right");
         }
 
-        menu.id = menu.attr("id");
-        menu.cookieName = "bsm2-" + menu.id;
-        menu.toggler = $(menu.children()[1]);
-        menu.originalPushBody = options.pushBody;
-        menu.originalCloseOnClick = options.closeOnClick;
+        $menu.id = $menu.attr("id");
+        $menu.cookieName = "bsm2-" + $menu.id;
+        $menu.toggler = $menu.find('[data-whois="toggler"]');
+        $menu.originalPushBody = options.pushBody;
+        $menu.originalCloseOnClick = options.closeOnClick;
 
 
         if (options.remember) {
-            prevStatus = readCookie(menu.cookieName);
+            prevStatus = readCookie($menu.cookieName);
         } else {
             prevStatus = null;
         }
@@ -99,45 +108,47 @@
                 break;
         }
 
-        if (options.onStartup !== undefined) {
-            options.onStartup(menu);
+        if (options.onStartup !== undefined && isFunction(options.onStartup)) {
+            options.onStartup($menu);
         }
 
-        $("[data-toggle=\"collapse\"]", menu).each(function () {
-            var icona = $("<span class=\"glyphicon glyphicon-chevron-right\"></span>");
-            $(this).prepend(icona);
+        $('[data-toggle="collapse"]', $menu).each(function () {
+            var $icon = $('<span/>');
+            $icon.addClass('icon');
+            $icon.addClass(options.icons.right);
+
+            $(this).prepend($icon);
         });
 
-        menu.off("click", "[data-whois=toggler]");
-        menu.on("click", "[data-whois=toggler]", function () {
-            toggle();
-            if (options.onTogglerClick !== undefined) {
-                options.onTogglerClick(menu);
-            }
-        });
+        $menu.off('click', '.toggler[data-whois="toggler"]', toggle);
+        $menu.on('click', '.toggler[data-whois="toggler"]', toggle);
 
-        menu.off("click", ".list-group-item");
-        menu.on("click", ".list-group-item", function () {
-            menu.find(".list-group-item").each(function () {
+        $menu.off('click', '.list-group-item');
+        $menu.on('click', '.list-group-item', function () {
+            $menu.find(".list-group-item").each(function () {
                 $(this).removeClass("active");
             });
-            $(this).addClass("active");
-            $(".glyphicon", this).toggleClass("glyphicon-chevron-right").toggleClass("glyphicon-chevron-down");
+            $(this).addClass('active');
+            $('.icon', $(this)).toggleClass(options.icons.right).toggleClass(options.icons.down);
         });
 
 
-        menu.off("click", "a.list-group-item");
-        menu.on("click", "a.list-group-item", function () {
-            if (options.closeOnClick) {
-                if ($(this).attr("data-toggle") != "collapse") {
-                    closeMenu(true);
-                }
+        $menu.off('click', 'a.list-group-item', onItemClick);
+        $menu.on('click', 'a.list-group-item', onItemClick);
+
+        function onItemClick() {
+            if (options.closeOnClick && ($(this).attr('data-toggle') !== 'collapse')) {
+                closeMenu(true);
             }
-        });
-
+        }
 
         function toggle() {
-            if (menu.status == "opened") {
+
+            if (options.onTogglerClick !== undefined && isFunction(options.onTogglerClick)) {
+                options.onTogglerClick($menu);
+            }
+
+            if ($menu.status === "opened") {
                 closeMenu(true);
             } else {
                 openMenu(true);
@@ -145,131 +156,136 @@
         }
 
         function switchArrow(side) {
-            var span = menu.toggler.find("span.glyphicon");
-            if (side == "left") {
-                span.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right");
-            } else if (side == "right") {
-                span.removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-left");
+            var $icon = $menu.toggler.find(".icon");
+
+            $icon.removeClass();
+
+            if (side === "left") {
+                $icon.addClass(options.icons.right);
+            } else if (side === "right") {
+                $icon.addClass(options.icons.left);
             }
+
+            $icon.addClass('icon');
         }
 
         function startDefault() {
-            if (options.side == "left") {
+            if (options.side === "left") {
                 if (options.autoClose) {
-                    menu.status = "closed";
-                    menu.hide().animate({
-                        left: -(menu.width() + 2)
+                    $menu.status = "closed";
+                    $menu.hide().animate({
+                        left: -($menu.width() + 2)
                     }, 1, function () {
-                        menu.show();
+                        $menu.show();
                         switchArrow("left");
                     });
                 } else if (!options.autoClose) {
                     switchArrow("right");
-                    menu.status = "opened";
+                    $menu.status = "opened";
                     if (options.pushBody) {
-                        $("body").css("margin-left", menu.width() + 20);
+                        $DOMBody.css("margin-left", $menu.width() + 20);
                     }
                 }
-            } else if (options.side == "right") {
+            } else if (options.side === "right") {
                 if (options.autoClose) {
-                    menu.status = "closed";
-                    menu.hide().animate({
-                        right: -(menu.width() + 2)
+                    $menu.status = "closed";
+                    $menu.hide().animate({
+                        right: -($menu.width() + 2)
                     }, 1, function () {
-                        menu.show();
+                        $menu.show();
                         switchArrow("right");
                     });
                 } else {
                     switchArrow("left");
-                    menu.status = "opened";
+                    $menu.status = "opened";
                     if (options.pushBody) {
-                        $("body").css("margin-right", menu.width() + 20);
+                        $DOMBody.css("margin-right", $menu.width() + 20);
                     }
                 }
             }
         }
 
         function startClosed() {
-            if (options.side == "left") {
-                menu.status = "closed";
-                menu.hide().animate({
-                    left: -(menu.width() + 2)
+            if (options.side === "left") {
+                $menu.status = "closed";
+                $menu.hide().animate({
+                    left: -($menu.width() + 2)
                 }, 1, function () {
-                    menu.show();
+                    $menu.show();
                     switchArrow("left");
                 });
-            } else if (options.side == "right") {
-                menu.status = "closed";
-                menu.hide().animate({
-                    right: -(menu.width() + 2)
+            } else if (options.side === "right") {
+                $menu.status = "closed";
+                $menu.hide().animate({
+                    right: -($menu.width() + 2)
                 }, 1, function () {
-                    menu.show();
+                    $menu.show();
                     switchArrow("right");
                 })
             }
         }
 
         function startOpened() {
-            if (options.side == "left") {
+            if (options.side === "left") {
                 switchArrow("right");
-                menu.status = "opened";
+                $menu.status = "opened";
                 if (options.pushBody) {
-                    $("body").css("margin-left", menu.width() + 20);
+                    $DOMBody.css("margin-left", $menu.width() + 20);
                 }
 
-            } else if (options.side == "right") {
+            } else if (options.side === "right") {
                 switchArrow("left");
-                menu.status = "opened";
+                $menu.status = "opened";
                 if (options.pushBody) {
-                    $("body").css("margin-right", menu.width() + 20);
+                    $DOMBody.css("margin-right", $menu.width() + 20);
                 }
             }
         }
 
         function closeMenu(execFunctions) {
             if (execFunctions) {
-                if (options.onBeforeClose !== undefined) {
-                    options.onBeforeClose(menu);
+                if (options.onBeforeClose !== undefined && isFunction(options.onBeforeClose)) {
+                    options.onBeforeClose($menu);
                 }
             }
-            if (options.side == "left") {
+            if (options.side === "left") {
 
                 if (options.pushBody) {
-                    $("body").animate({marginLeft: body.originalMarginLeft}, {duration: options.duration});
+                    $DOMBody.animate({marginLeft: bodyProperties.originalMarginLeft}, {duration: options.duration});
                 }
 
-                menu.animate({
-                    left: -(menu.width() + 2)
+                $menu.animate({
+                    left: -($menu.width() + 2)
                 }, {
                     duration: options.duration,
                     done: function () {
                         switchArrow("left");
-                        menu.status = "closed";
+                        $menu.status = "closed";
 
                         if (execFunctions) {
-                            if (options.onClose !== undefined) {
-                                options.onClose(menu);
+                            if (options.onClose !== undefined && isFunction(options.onClose)) {
+                                options.onClose($menu);
                             }
                         }
                     }
                 });
-            } else if (options.side == "right") {
+            } else if (options.side === "right") {
 
                 if (options.pushBody) {
-                    $("body").animate({marginRight: body.originalMarginRight}, {duration: options.duration});
+                    $DOMBody.animate({marginRight: bodyProperties.originalMarginRight}, {duration: options.duration});
                 }
 
-                menu.animate({
-                    right: -(menu.width() + 2)
+                $menu.animate({
+                    right: -($menu.width() + 2)
                 }, {
                     duration: options.duration,
                     done: function () {
                         switchArrow("right");
-                        menu.status = "closed";
+                        $menu.status = "closed";
 
                         if (execFunctions) {
-                            if (options.onClose !== undefined) {
-                                options.onClose(menu);
+                            if (options.onClose !== undefined && isFunction(options.onClose)) {
+                                options.onClose($menu);
                             }
                         }
                     }
@@ -277,7 +293,7 @@
             }
 
             if (options.remember) {
-                storeCookie(menu.cookieName, "closed");
+                storeCookie($menu.cookieName, "closed");
             }
 
         }
@@ -285,49 +301,49 @@
         function openMenu(execFunctions) {
 
             if (execFunctions) {
-                if (options.onBeforeOpen !== undefined) {
-                    options.onBeforeOpen(menu);
+                if (options.onBeforeOpen !== undefined && isFunction(options.onBeforeOpen)) {
+                    options.onBeforeOpen($menu);
                 }
             }
 
-            if (options.side == "left") {
+            if (options.side === "left") {
 
                 if (options.pushBody) {
-                    $("body").animate({marginLeft: menu.width() + 20}, {duration: options.duration});
+                    $DOMBody.animate({marginLeft: $menu.width() + 20}, {duration: options.duration});
                 }
 
-                menu.animate({
+                $menu.animate({
                     left: 0
                 }, {
                     duration: options.duration,
                     done: function () {
                         switchArrow("right");
-                        menu.status = "opened";
+                        $menu.status = "opened";
 
                         if (execFunctions) {
-                            if (options.onOpen !== undefined) {
-                                options.onOpen(menu);
+                            if (options.onOpen !== undefined && isFunction(options.onOpen)) {
+                                options.onOpen($menu);
                             }
                         }
                     }
                 });
-            } else if (options.side == "right") {
+            } else if (options.side === "right") {
 
                 if (options.pushBody) {
-                    $("body").animate({marginRight: menu.width() + 20}, {duration: options.duration});
+                    $DOMBody.animate({marginRight: $menu.width() + 20}, {duration: options.duration});
                 }
 
-                menu.animate({
+                $menu.animate({
                     right: 0
                 }, {
                     duration: options.duration,
                     done: function () {
                         switchArrow("left");
-                        menu.status = "opened";
+                        $menu.status = "opened";
 
                         if (execFunctions) {
-                            if (options.onOpen !== undefined) {
-                                options.onOpen(menu);
+                            if (options.onOpen !== undefined && isFunction(options.onOpen)) {
+                                options.onOpen($menu);
                             }
                         }
                     }
@@ -335,7 +351,7 @@
             }
 
             if (options.remember) {
-                storeCookie(menu.cookieName, "opened");
+                storeCookie($menu.cookieName, "opened");
             }
         }
 
@@ -347,8 +363,8 @@
                 options.pushBody = false;
                 options.closeOnClick = true;
             } else {
-                options.pushBody = menu.originalPushBody;
-                options.closeOnClick = menu.originalCloseOnClick;
+                options.pushBody = $menu.originalPushBody;
+                options.closeOnClick = $menu.originalCloseOnClick;
             }
         }
 
@@ -364,20 +380,24 @@
             var ca = document.cookie.split(";");
             for (var i = 0; i < ca.length; i++) {
                 var c = ca[i];
-                while (c.charAt(0) == " ")
+                while (c.charAt(0) === " ")
                     c = c.substring(1);
-                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
             }
             return null;
         }
 
+        function isFunction(functionToCheck) {
+            var getType = {};
+            return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+        }
 
         function onResize() {
             forSmallBody();
-            if (menu.status == "closed") {
+            if ($menu.status === "closed") {
                 startClosed();
             }
-            if (menu.status == "opened") {
+            if ($menu.status === "opened") {
                 startOpened();
             }
         }

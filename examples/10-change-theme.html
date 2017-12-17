@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Set duration</title>
+    <title>Change Themes</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/BootSideMenu.css">
+    <link rel="stylesheet" href="../css/theme/dracula.css">
+    <link rel="stylesheet" href="../css/theme/darkblue.css">
+    <link rel="stylesheet" href="../css/theme/zenburn.css">
 
     <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
@@ -43,21 +46,68 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
-                    <p class="lead">The menu is on the left. Moving tooks 2 seconds.</p>
+                    <p class="lead">The <i>Dracula</i> menu is on the left.</p>
                     <pre>$(document).ready(function () {
     $('#test').BootSideMenu({
-        side: "left",
-        pushBody: false,
-        duration:2000
+        side: 'left',
+        theme:'dracula', //darkblue or zenburn
     });
 });</pre>
-                    <p class="lead"> By default the menu is large as the 15% of the page. To change this feature use the
-                        option:</p>
-                    <pre>width:'300px' //or '20%'</pre>
-                    <small>You can use percentage or measure unit.</small>
-                    <br/>
-                    <br/>
-                    <p>Watch this changes in the <a href="4-width.html">next example</a>.</p>
+
+                    <p class="lead">If you want to create a theme like this... here is the way:</p>
+                    <p>
+                        Create and embed (after the BootSideMenu.css inclusion) a css file, contains something like
+                        this:</p>
+                    <pre>
+.customtheme{
+    background-color: #404040;
+    color:#CAE682;
+}
+
+.customtheme .toggler{
+    background-color: #404040;
+}
+
+.customtheme a,
+.customtheme a:hover,
+.customtheme a:visited {
+    color: #EFEFAF;
+}
+
+.customtheme.bootsidemenu-left,
+.customtheme.bootsidemenu-right,
+.customtheme.bootsidemenu-left > .toggler,
+.customtheme.bootsidemenu-right > .toggler{
+    border-color: #44475a;
+}
+
+.customtheme .list-group-item.active,
+.customtheme .list-group-item.active:focus,
+.customtheme .list-group-item.active:hover
+.customtheme .item.active:focus {
+    color:#44475a;
+    background-color: #DFBE95;
+    border-color: #DFBE95;
+}
+
+.customtheme a.list-group-item{
+    color:#CAE682;
+}
+
+.customtheme a.list-group-item:focus,
+.customtheme a.list-group-item:hover,
+.customtheme button.list-group-item:focus,
+.customtheme button.list-group-item:hover {
+    color: #44475a;
+    text-decoration: none;
+    background-color: #DFBE95;
+    border-color: #DFBE95;
+}
+                    </pre>
+                    <p>After that, use your 'customtheme' name into <code>theme:</code> option.</p>
+                    <p class="lead">If you want to share your creation, feel free to send me your css file.</p>
+                    <p>That's all for now. <a href="../index.html">Go back</a>!</p>
+
                 </div>
             </div>
         </div>
@@ -74,7 +124,7 @@
 </div>
 
 <!--Test -->
-<div id="test" w3-include-html="inc/menu-template.html"></div>
+<div id="test" w3-include-html="inc/menu-template-theme.html"></div>
 <!--/Test -->
 
 <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -90,12 +140,22 @@
     });
 
     function init() {
+
         $('#test').BootSideMenu({
-            side: "left",
-            pushBody: false,
-            duration: 1000
+            side: 'left',
+            theme: 'dracula'
         });
+
+        $('#theme-selector').off('change');
+        $('#theme-selector').on('change', function () {
+
+            var val = $(this).val();
+
+            $('#test').removeClass();
+            $('#test').addClass('container bootsidemenu bootsidemenu-left');
+            $('#test').addClass(val);
+
+        })
     }
 </script>
 </body>
-</html>

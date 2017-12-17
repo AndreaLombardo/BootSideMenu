@@ -1,0 +1,47 @@
+/*========== Theme Zenburn ==========*/
+.zenburn {
+    background-color: #404040;
+    color: #CAE682;
+}
+
+.zenburn .toggler {
+    background-color: #404040;
+}
+
+.zenburn a,
+.zenburn a:hover,
+.zenburn a:visited {
+    color: #EFEFAF;
+}
+
+.zenburn.bootsidemenu-left,
+.zenburn.bootsidemenu-right,
+.zenburn.bootsidemenu-left > .toggler,
+.zenburn.bootsidemenu-right > .toggler {
+    border-color: #44475a;
+}
+
+.zenburn .list-group-item.active,
+.zenburn .list-group-item.active:focus,
+.zenburn .list-group-item.active:hover,
+.zenburn .item.active:focus {
+    color: #44475a;
+    background-color: #DFBE95;
+    border-color: #DFBE95;
+}
+
+.zenburn a.list-group-item {
+    color: #CAE682;
+}
+
+.zenburn a.list-group-item:focus,
+.zenburn a.list-group-item:hover,
+.zenburn button.list-group-item:focus,
+.zenburn button.list-group-item:hover {
+    color: #44475a;
+    text-decoration: none;
+    background-color: #DFBE95;
+    border-color: #DFBE95;
+}
+
+/*========== /Theme Zenburn ==========*/

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Test</title>
+    <title>BootSideMenu By Andrea Lombardo</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,108 +20,43 @@
 <div class="container">
 
     <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">BootSideMenu</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html"><span class="fa fa-home"></span> Home</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span class="fa fa-code"></span> Examples</a></li>
-                    <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span class="fa fa-paypal"></span> Donation</a></li>
-                    <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span> Twitter</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/" target="_blank"><span class="fa fa-github"></span> Github</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://github.com/AndreaLombardo/BootSideMenu/">Github</a></li>
-                            <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE">Donation</a></li>
-                            <li><a href="http://www.lombardoandrea.com">My Site</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-default" w3-include-html="examples/inc/navbar.html"></nav>
+    <!-- /Static navbar -->
 
-    <div class="jumbotron">
-        <h1>BootSideMenu</h1>
-
-        <p>A jQuery plugin to easily create a sliding menu, working on a Bootstrap based application.</p>
-
-        <p>
-            <a class="btn btn-lg btn-warning" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" role="button"><span
-                    class="fa fa-paypal"></span> Thanks</a>
-        </p>
-    </div>
+    <!-- Jumbotron -->
+    <div class="jumbotron" w3-include-html="examples/inc/jumbotron.html"></div>
+    <!-- /Jumbotron -->
 
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-share-alt"></span> Share your experience</div>
                 <div class="panel-body">
-                    <p class="lead">Those who send me the link of the website in which you will use this plugin, will be mentioned in the <u>future</u> section "<a
-                            href="#">Used
-                        by</a>"</p>
+                    <p class="lead">Send me a link where you are using my plugin I'll mention it in
+                        the <u>future</u> section "<a
+                                href="#">Used By</a>"</p>
                 </div>
             </div>
         </div>
 
+        <div class="col-md-4" w3-include-html="inc/example-list.html"></div>
+
+        <!--Right col-->
         <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-list"></span> Examples</div>
-                <div class="panel-body">
-                    <p class="lead">All examples uses <a href="examples/0-menu-template.html">this</a> template for the HTML code.</p>
-
-                    <p>Watch some examples!</p>
-                </div>
-                <ul class="list-group">
-                    <a href="examples/1-simple-left.html" class="list-group-item">Simple left</a>
-                    <a href="examples/2-simple-right.html" class="list-group-item">Simple right</a>
-                    <a href="examples/3-duration.html" class="list-group-item">Define duration</a>
-                    <a href="examples/4-width.html" class="list-group-item">Custom width</a>
-                    <a href="examples/5-close-on-click.html" class="list-group-item">Don't close on click</a>
-                    <a href="examples/6-events.html" class="list-group-item">Events</a>
-                    <a href="examples/7-on-toggler-click.html" class="list-group-item">On Arrow Click</a>
-                    <a href="examples/8-simple-left-with-select.html" class="list-group-item">Basic With Selectbox</a>
-                </ul>
-            </div>
+            <div w3-include-html="examples/inc/right-content.html"></div>
         </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="fa fa-paypal"></span> A courtesy coffee?</div>
-                <div class="panel-body">
-                    <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.</p>
-
-                    <p class="text-center">
-                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" target="_blank"><img src="img/paypal_coffee.png"
-                                                                                                                                          style="border: 0"></a></p>
-
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="DUNFGKA32BFGE">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit"
-                               alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!--/Right col-->
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        w3.includeHTML();
+    });
+</script>
 </body>
 </html>

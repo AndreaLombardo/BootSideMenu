@@ -1,0 +1,47 @@
+/*========== Theme Darkblue ==========*/
+.darkblue {
+    background-color: #1D4E6D;
+    color: #F7A92C;
+}
+
+.darkblue .toggler {
+    background-color: #1D4E6D;
+}
+
+.darkblue a,
+.darkblue a:hover,
+.darkblue a:visited {
+    color: #9CDD80;
+}
+
+.darkblue.bootsidemenu-left,
+.darkblue.bootsidemenu-right,
+.darkblue.bootsidemenu-left > .toggler,
+.darkblue.bootsidemenu-right > .toggler {
+    border-color: #44475a;
+}
+
+.darkblue .list-group-item.active,
+.darkblue .list-group-item.active:focus,
+.darkblue .list-group-item.active:hover,
+.darkblue .item.active:focus {
+    color: #44475a;
+    background-color: #BED6FF;
+    border-color: #BED6FF;
+}
+
+.darkblue a.list-group-item {
+    color: #F7A92C;
+}
+
+.darkblue a.list-group-item:focus,
+.darkblue a.list-group-item:hover,
+.darkblue button.list-group-item:focus,
+.darkblue button.list-group-item:hover {
+    color: #44475a;
+    text-decoration: none;
+    background-color: #BED6FF;
+    border-color: #BED6FF;
+}
+
+/*========== /Theme Darkblue ==========*/
