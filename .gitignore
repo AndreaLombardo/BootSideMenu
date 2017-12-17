@@ -2,4 +2,4 @@
 .idea/
 .gitignore
 .DS_Store
-examples/00-example-template.html
+./examples/00-example-template.html
