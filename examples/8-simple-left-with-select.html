@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple menu left</title>
+    <title>Simple menu left with selectbox</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,7 +32,8 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -43,18 +44,26 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../index.html"><span class="fa fa-home"></span> Home</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span class="fa fa-code"></span> Examples</a></li>
-                    <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span class="fa fa-paypal"></span> Donation</a></li>
-                    <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span> Twitter</a></li>
-                    <li><a href="https://github.com/AndreaLombardo/" target="_blank"><span class="fa fa-github"></span> Github</a></li>
+                    <li><a href="https://github.com/AndreaLombardo/BootSideMenu/tree/master/examples"><span
+                            class="fa fa-code"></span> Examples</a></li>
+                    <li>
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"><span
+                                class="fa fa-paypal"></span> Donation</a></li>
+                    <li><a href="https://twitter.com/AndreaL0mbardo" target="_blank"><span class="fa fa-twitter"></span>
+                        Twitter</a></li>
+                    <li><a href="https://github.com/AndreaLombardo/" target="_blank"><span class="fa fa-github"></span>
+                        Github</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">More <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="https://github.com/AndreaLombardo/BootSideMenu/">Github</a></li>
-                            <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE">Donation</a></li>
+                            <li>
+                                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE">Donation</a>
+                            </li>
                             <li><a href="http://www.lombardoandrea.com">My Site</a></li>
                         </ul>
                     </li>
@@ -69,7 +78,9 @@
         <p>A jQuery plugin to easily create a sliding menu, working on a Bootstrap based application.</p>
 
         <p>
-            <a class="btn btn-lg btn-warning" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" role="button"><span
+            <a class="btn btn-lg btn-warning"
+               href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"
+               role="button"><span
                     class="fa fa-paypal"></span> Thanks</a>
         </p>
     </div>
@@ -80,16 +91,33 @@
                 <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
                     <p class="lead">The menu will appear on the left.</p>
-                <pre>$(document).ready(function () {
+                    <pre>$(document).ready(function () {
     $('#test').BootSideMenu({
         side: "left"
     });
 });</pre>
-                    <p class="lead"> By default it remembers its last opened status and push the body while it slide. To disable these features use the options:</p>
+                    <p class="lead"> This example is the same as the basic:</p>
                     <pre>remember:false</pre>
                     <pre>pushBody:false</pre>
 
-                    <p>Watch this changes in the <a href="2-simple-right.html">next example</a>.</p>
+                    <p class="lead">Plus the addition of a selectbox under the user section.</p>
+                    <pre>
+&lt;div class="form-group" style="margin:10px 5px;"&gt;
+    &lt;label&gt;My Selectbox&lt;/label&gt;
+    &lt;select class="form-control"&gt;
+        &lt;option value=""&gt;Select Diam Quality&lt;/option&gt;
+        &lt;option value="1"&gt;SIGHI&lt;/option&gt;
+        &lt;option value="2"&gt;I1GHI&lt;/option&gt;
+        &lt;option value="3"&gt;SIJK&lt;/option&gt;
+        &lt;option value="4"&gt;VSGHI&lt;/option&gt;
+        &lt;option value="5"&gt;VVSGHI&lt;/option&gt;
+        &lt;option value="6"&gt;VVSDEF&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+                    </pre>
+
+                    <p>That's all for now. <a href="../index.html">Go back</a>!</p>
+
                 </div>
             </div>
         </div>
@@ -98,18 +126,23 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-paypal"></span> A courtesy coffee?</div>
                 <div class="panel-body">
-                    <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very satisfied.</p>
+                    <p class="lead">If you appreciate my work, and you are kind to offer a coffee, I will be very
+                        satisfied.</p>
 
                     <p class="text-center">
-                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE" target="_blank"><img src="../img/paypal_coffee.png"
-                                                                                                                                          style="border: 0"></a></p>
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DUNFGKA32BFGE"
+                           target="_blank"><img src="../img/paypal_coffee.png"
+                                                style="border: 0"></a></p>
 
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
+                          class="text-center">
                         <input type="hidden" name="cmd" value="_s-xclick">
                         <input type="hidden" name="hosted_button_id" value="DUNFGKA32BFGE">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit"
+                        <input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif"
+                               border="0" name="submit"
                                alt="PayPal è il metodo rapido e sicuro per pagare e farsi pagare online.">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
+                             height="1">
                     </form>
                 </div>
             </div>
@@ -123,6 +156,21 @@
     <div class="user">
         <img src="../img/avatar.png" alt="Esempio" class="img-thumbnail"><br>
         <a href="http://www.lombardoandrea.com" target="_blank" class="navbar-link">Andrea Lombardo</a>
+    </div>
+
+    <div class="form-group" style="margin:10px 5px;">
+        <label>My Selectbox</label>
+        <select class="chosen-select form-control" data-val="true"
+                data-val-number="The field Diam Quality must be a number." data-val-required="Diam Quality ID is must"
+                id="DiamQualityID" name="DiamQualityID">
+            <option value="">Select Diam Quality</option>
+            <option value="1">SIGHI</option>
+            <option value="2">I1GHI</option>
+            <option value="3">SIJK</option>
+            <option value="4">VSGHI</option>
+            <option value="5">VVSGHI</option>
+            <option value="6">VVSDEF</option>
+        </select>
     </div>
 
     <div class="list-group">
@@ -178,7 +226,8 @@
 </div>
 <!--/Test -->
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../js/BootSideMenu.js"></script>
 
