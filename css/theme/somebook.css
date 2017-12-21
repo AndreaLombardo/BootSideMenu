@@ -1,0 +1,46 @@
+/*========== Theme Some Book ==========*/
+.somebook {
+    background-color: #4468B0;
+    color: #ffffff;
+}
+
+.somebook .toggler {
+    background-color: #4468B0;
+}
+
+.somebook a,
+.somebook a:hover,
+.somebook a:visited {
+    color: #0D1423;
+}
+
+.somebook.bootsidemenu-left,
+.somebook.bootsidemenu-right,
+.somebook.bootsidemenu-left > .toggler,
+.somebook.bootsidemenu-right > .toggler {
+    border-color: #3D5D9E;
+}
+
+.somebook .list-group-item.active,
+.somebook .list-group-item.active:focus,
+.somebook .list-group-item.active:hover,
+.somebook .item.active:focus {
+    color: #ffffff;
+    background-color: #3D5D9E;
+    border-color: #3D5D9E;
+}
+
+.somebook a.list-group-item {
+    color: #ffffff;
+}
+
+.somebook a.list-group-item:focus,
+.somebook a.list-group-item:hover,
+.somebook button.list-group-item:focus,
+.somebook button.list-group-item:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #3D5D9E;
+    border-color: #3D5D9E;
+}
+/*========== /Theme Some Book ==========*/
