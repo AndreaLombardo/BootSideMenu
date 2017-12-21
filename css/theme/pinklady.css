@@ -1,0 +1,47 @@
+/*========== Theme Pink Lady ==========*/
+.pinklady {
+    background-color: #e1afd2;
+    color: #e4ecfd;
+}
+
+.pinklady .toggler {
+    background-color: #e1afd2;
+}
+
+.pinklady a,
+.pinklady a:hover,
+.pinklady a:visited {
+    color: #ad368e;
+}
+
+.pinklady.bootsidemenu-left,
+.pinklady.bootsidemenu-right,
+.pinklady.bootsidemenu-left > .toggler,
+.pinklady.bootsidemenu-right > .toggler {
+    border-color: #d987c4;
+}
+
+.pinklady .list-group-item.active,
+.pinklady .list-group-item.active:focus,
+.pinklady .list-group-item.active:hover,
+.pinklady .item.active:focus {
+    color: #44475a;
+    background-color: #d987c4;
+    border-color: #d987c4;
+}
+
+.pinklady a.list-group-item {
+    color: #e4ecfd;
+}
+
+.pinklady a.list-group-item:focus,
+.pinklady a.list-group-item:hover,
+.pinklady button.list-group-item:focus,
+.pinklady button.list-group-item:hover {
+    color: #44475a;
+    text-decoration: none;
+    background-color: #d987c4;
+    border-color: #d987c4;
+}
+
+/*========== /Theme Pink Lady ==========*/
