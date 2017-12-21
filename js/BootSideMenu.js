@@ -14,6 +14,8 @@
         var prevStatus;
         var bodyProperties = {};
 
+        var hoverStatus;
+
         var $DOMBody = $("body", document);
 
         var defaults = {
@@ -132,9 +134,25 @@
             $('.icon', $(this)).toggleClass(options.icons.right).toggleClass(options.icons.down);
         });
 
-
         $menu.off('click', 'a.list-group-item', onItemClick);
         $menu.on('click', 'a.list-group-item', onItemClick);
+
+        $menu.off('mouseenter mouseleave');
+        $menu.hover(menuOnHoverIn, menuOnHoverOut);
+
+        $(document).on('click', function () {
+            if (options.closeOnClick && (!hoverStatus)) {
+                closeMenu(true);
+            }
+        });
+
+        function menuOnHoverOut() {
+            hoverStatus = false;
+        }
+
+        function menuOnHoverIn() {
+            hoverStatus = true;
+        }
 
         function onItemClick() {
             if (options.closeOnClick && ($(this).attr('data-toggle') !== 'collapse')) {
