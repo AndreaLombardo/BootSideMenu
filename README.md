@@ -14,7 +14,7 @@ Online demo can be found [HERE](https://andrealombardo.github.io/BootSideMenu/)
 |**remember**|Boolean|true or false|Restore last menu status on page refresh|*true*
 |**autoClose**|Boolean|true or false|If true the initial status will be "closed"|false
 |**pushBody**|Boolean|true or false|If true the body of the page will be pushed left or right, according to the menu width and position|false
-|**closeOnClick**|Boolean|true or false|If true the menu will be closed when a link is clicked|true
+|**closeOnClick**|Boolean|true or false|If true the menu will be closed when a link is clicked or if a click is made outside of it|true
 |**icons**|Object|An object where to specify the icon fonts classes|A way to use other icon fonts instead of glyphicon|`icons: {left: 'glyphicon glyphicon-chevron-left', right: 'glyphicon glyphicon-chevron-right', down: 'glyphicon glyphicon-chevron-down'}`
 |**theme**|String|'dracula', 'darkblue', 'zenburn'|Actually only 4 themes available. Your one is welcome.|*'default'*
 
