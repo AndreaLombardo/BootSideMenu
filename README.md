@@ -34,7 +34,7 @@ Online demo can be found [HERE](https://andrealombardo.github.io/BootSideMenu/).
 |**$(selector).BootSideMenu.open();**| Open menu programmatically
 |**$(selector).BootSideMenu.close();**| Close menu programmatically
 |**$(selector).BootSideMenu.toggle();**| Toggle menu programmatically
-*Watch in action [HERE](https://andrealombardo.github.io/BootSideMenu/11-remote-control.html).*
+*Watch in action [HERE](https://andrealombardo.github.io/BootSideMenu/examples/11-remote-control.html).*
 
 ## Examples
 Watch the examples folder to see it in actions or try an [Online Demo](https://andrealombardo.github.io/BootSideMenu/)
