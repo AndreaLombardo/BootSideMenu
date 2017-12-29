@@ -30,7 +30,7 @@
                 right: 'glyphicon glyphicon-chevron-right',
                 down: 'glyphicon glyphicon-chevron-down'
             },
-            theme: '',
+            theme: 'default',
             width: "15%",
             onTogglerClick: function () {
                 //code to be executed when the toggler arrow was clicked
@@ -127,6 +127,8 @@
 
         $menu.off('click', '.list-group-item');
         $menu.on('click', '.list-group-item', function () {
+            console.log('click su list-group');
+            console.log($(this));
             $menu.find(".list-group-item").each(function () {
                 $(this).removeClass("active");
             });
@@ -434,6 +436,20 @@
             }, wait);
         }, false);
 
+
+        $.fn.BootSideMenu.open = function () {
+            openMenu();
+        };
+
+        $.fn.BootSideMenu.close = function () {
+            closeMenu();
+        };
+
+        $.fn.BootSideMenu.toggle = function () {
+            toggle();
+        };
+
         return this;
+
     }
 }(jQuery));
