@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple menu left with selectbox</title>
+    <title>Remote Control</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -37,39 +37,42 @@
     <!-- /Jumbotron -->
 
     <!--Example content-->
+
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading"><span class="fa fa-jsfiddle"></span> How to</div>
                 <div class="panel-body">
-                    <p class="lead">The menu is on the left and just to see how it's rendered I put a selectbox under
-                        the user picture</p>
-                    <pre>
-&lt;div class="form-group" style="margin:10px 5px;"&gt;
-    &lt;label&gt;My Selectbox&lt;/label&gt;
-    &lt;select class="form-control"&gt;
-        &lt;option value=""&gt;Select Diam Quality&lt;/option&gt;
-        &lt;option value="1"&gt;SIGHI&lt;/option&gt;
-        &lt;option value="2"&gt;I1GHI&lt;/option&gt;
-        &lt;option value="3"&gt;SIJK&lt;/option&gt;
-        &lt;option value="4"&gt;VSGHI&lt;/option&gt;
-        &lt;option value="5"&gt;VVSGHI&lt;/option&gt;
-        &lt;option value="6"&gt;VVSDEF&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/div&gt;
-                    </pre>
-                    <p class="lead">Menu is instantiated as the <a href="1-simple-left.html">basic example</a>.</p>
+                    <p class="lead">The menu is on the left and you can control it using these buttons.</p>
+                    <p>
+                        <button type="button" class="btn btn-sm btn-primary" id="btnOpen">Open</button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-sm btn-primary" id="btnClose">Close</button>&nbsp;&nbsp;
+                        <button type="button" class="btn btn-sm btn-primary" id="btnToggle">Toggle</button>
+                    </p>
                     <pre>$(document).ready(function () {
-    $('#test').BootSideMenu({
-        side: "left"
-    });
+        $('#test').BootSideMenu({
+            side: "left",
+            closeOnClick: false
+        });
+
+        $('#btnOpen').click(function () {
+            $('#test').BootSideMenu.open();
+        });
+
+        $('#btnClose').click(function () {
+            $('#test').BootSideMenu.close();
+        });
+
+        $('#btnToggle').click(function () {
+            $('#test').BootSideMenu.toggle();
+        });
 });</pre>
-
-
-                    <p>As a <a href="https://github.com/AndreaLombardo/BootSideMenu/issues/18">user request</a> I
-                        introduced a way to customize menu icons. See it in the <a href="9-change-arrows-font.html">next
-                            example</a>.</p>
-
+                    <p>Hope this will help <strong><a
+                            href="https://github.com/AndreaLombardo/BootSideMenu/issues/24" target="_blank">Rapid0s</a></strong>
+                        and
+                        <strong><a href="https://github.com/AndreaLombardo/BootSideMenu/issues/9"
+                                   target="_blank">harrisdavidharris</a></strong></p>
+                    <p>That's all for now. <a href="../index.html">Go back</a>!</p>
                 </div>
             </div>
         </div>
@@ -85,7 +88,7 @@
 </div>
 
 <!--Test -->
-<div id="test" w3-include-html="inc/menu-template-selectbox.html"></div>
+<div id="test" w3-include-html="inc/menu-template.html"></div>
 <!--/Test -->
 
 <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -102,9 +105,22 @@
 
     function init() {
         $('#test').BootSideMenu({
-            side: "left"
+            side: "left",
+            closeOnClick: false
+        });
+
+
+        $('#btnOpen').click(function () {
+            $('#test').BootSideMenu.open();
+        });
+
+        $('#btnClose').click(function () {
+            $('#test').BootSideMenu.close();
+        });
+
+        $('#btnToggle').click(function () {
+            $('#test').BootSideMenu.toggle();
         });
     }
 </script>
 </body>
-</html>

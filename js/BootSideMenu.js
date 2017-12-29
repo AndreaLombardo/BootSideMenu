@@ -30,7 +30,7 @@
                 right: 'glyphicon glyphicon-chevron-right',
                 down: 'glyphicon glyphicon-chevron-down'
             },
-            theme: '',
+            theme: 'default',
             width: "15%",
             onTogglerClick: function () {
                 //code to be executed when the toggler arrow was clicked
@@ -434,6 +434,20 @@
             }, wait);
         }, false);
 
+
+        $.fn.BootSideMenu.open = function () {
+            openMenu();
+        };
+
+        $.fn.BootSideMenu.close = function () {
+            closeMenu();
+        };
+
+        $.fn.BootSideMenu.toggle = function () {
+            toggle();
+        };
+
         return this;
+
     }
 }(jQuery));
