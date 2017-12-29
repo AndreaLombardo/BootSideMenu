@@ -127,8 +127,6 @@
 
         $menu.off('click', '.list-group-item');
         $menu.on('click', '.list-group-item', function () {
-            console.log('click su list-group');
-            console.log($(this));
             $menu.find(".list-group-item").each(function () {
                 $(this).removeClass("active");
             });
