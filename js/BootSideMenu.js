@@ -1,23 +1,13 @@
 /**
  * BootSideMenu v 2.0
- * Author: Andrea Lombardo
+ * Authors: Andrea Lombardo, William Crandell
  * http://www.lombardoandrea.com
  * https://github.com/AndreaLombardo/BootSideMenu
  * */
 (function ($) {
 
-    $.fn.BootSideMenu = function (userOptions) {
-
-        var initialCode;
-        var newCode;
-        var $menu;
-        var prevStatus;
-        var bodyProperties = {};
-
-        var hoverStatus;
-
-        var $DOMBody = $("body", document);
-
+    // here we go!
+    $.bootSideMenu = function(element, userOptions) {
         var defaults = {
             side: "left",
             duration: 500,
@@ -52,44 +42,76 @@
             }
         };
 
-        var options = $.extend({}, defaults, userOptions);
+      // to avoid confusions, use "plugin" to reference the
+      // current instance of the object
+      var plugin = this;
 
+      // this will hold the merged default, and user-provided options
+      // plugin's properties will be available through this object like:
+      // plugin.settings.propertyName from inside the plugin or
+      // element.data('pluginName').settings.propertyName from outside the plugin,
+      // where "element" is the element the plugin is attached to;
+      plugin.settings = {}
 
+      var $element = $(element), // reference to the jQuery version of DOM element
+      element = element; // reference to the actual DOM element
+
+      // the "constructor" method that gets called when the object is created
+
+        var initialCode;
+        var newCode;
+        var $menu;
+        var prevStatus;
+        var bodyProperties = {};
+
+        var hoverStatus;
+
+        var $DOMBody = $("body", document);
+        
+        var resizeStart;
+        var resizeEnd;
+        var wait = 250;
+        //var options = $.extend({}, defaults, userOptions);
+    
+    plugin.init = function() {
+        // the plugin's final properties are the merged default and
+        // user-provided options (if any)
+        plugin.settings = $.extend({}, defaults, userOptions);
         bodyProperties['originalMarginLeft'] = $DOMBody.css("margin-left");
         bodyProperties['originalMarginRight'] = $DOMBody.css("margin-right");
         bodyProperties['width'] = $DOMBody.width();
 
-        initialCode = this.html();
+        initialCode = $element.html();
 
         newCode = '<div class="menu-wrapper">' + initialCode + '</div>';
         newCode += '<div class="toggler" data-whois="toggler">';
         newCode += '<span class="icon">&nbsp;</span>';
         newCode += '</div>';
 
-        this.empty();
-        this.html(newCode);
+        $element.empty();
+        $element.html(newCode);
 
-        $menu = $(this);
+        $menu = $element;
 
         $menu.addClass("container");
         $menu.addClass("bootsidemenu");
-        $menu.addClass(options.theme);
-        $menu.css("width", options.width);
+        $menu.addClass(plugin.settings.theme);
+        $menu.css("width", plugin.settings.width);
 
-        if (options.side === "left") {
+        if (plugin.settings.side === "left") {
             $menu.addClass("bootsidemenu-left");
-        } else if (options.side === "right") {
+        } else if (plugin.settings.side === "right") {
             $menu.addClass("bootsidemenu-right");
         }
 
         $menu.id = $menu.attr("id");
         $menu.cookieName = "bsm2-" + $menu.id;
         $menu.toggler = $menu.find('[data-whois="toggler"]');
-        $menu.originalPushBody = options.pushBody;
-        $menu.originalCloseOnClick = options.closeOnClick;
+        $menu.originalPushBody = plugin.settings.pushBody;
+        $menu.originalCloseOnClick = plugin.settings.closeOnClick;
 
 
-        if (options.remember) {
+        if (plugin.settings.remember) {
             prevStatus = readCookie($menu.cookieName);
         } else {
             prevStatus = null;
@@ -110,14 +132,14 @@
                 break;
         }
 
-        if (options.onStartup !== undefined && isFunction(options.onStartup)) {
-            options.onStartup($menu);
+        if (plugin.settings.onStartup !== undefined && isFunction(plugin.settings.onStartup)) {
+            plugin.settings.onStartup($menu);
         }
 
         $('[data-toggle="collapse"]', $menu).each(function () {
             var $icon = $('<span/>');
             $icon.addClass('icon');
-            $icon.addClass(options.icons.right);
+            $icon.addClass(plugin.settings.icons.right);
 
             $(this).prepend($icon);
         });
@@ -131,7 +153,7 @@
                 $(this).removeClass("active");
             });
             $(this).addClass('active');
-            $('.icon', $(this)).toggleClass(options.icons.right).toggleClass(options.icons.down);
+            $('.icon', $(this)).toggleClass(plugin.settings.icons.right).toggleClass(plugin.settings.icons.down);
         });
 
         $menu.off('click', 'a.list-group-item', onItemClick);
@@ -141,10 +163,44 @@
         $menu.hover(menuOnHoverIn, menuOnHoverOut);
 
         $(document).on('click', function () {
-            if (options.closeOnClick && (!hoverStatus)) {
+            if (plugin.settings.closeOnClick && (!hoverStatus)) {
                 closeMenu(true);
             }
         });
+
+        window.addEventListener("resize", function () {
+            resizeStart = new Date().getMilliseconds();
+            resizeEnd = resizeStart + wait;
+            setTimeout(function () {
+                var now = new Date().getMilliseconds();
+                if (now > resizeEnd) {
+                    onResize();
+                }
+            }, wait);
+        }, false);
+     }
+     
+			/*
+			plugin.foo_public_method = function() {}
+      var foo_private_method = function() {} 
+      */
+
+      plugin.open = function () {
+        openMenu();
+      };
+
+      plugin.close = function () {
+        closeMenu();
+      };
+
+      plugin.toggle = function () {
+        toggle();
+      };
+      
+       // fire up the plugin!
+       // call the "constructor" method
+       plugin.init();
+
 
         function menuOnHoverOut() {
             hoverStatus = false;
@@ -155,15 +211,15 @@
         }
 
         function onItemClick() {
-            if (options.closeOnClick && ($(this).attr('data-toggle') !== 'collapse')) {
+            if (plugin.settings.closeOnClick && ($(this).attr('data-toggle') !== 'collapse')) {
                 closeMenu(true);
             }
         }
 
         function toggle() {
 
-            if (options.onTogglerClick !== undefined && isFunction(options.onTogglerClick)) {
-                options.onTogglerClick($menu);
+            if (plugin.settings.onTogglerClick !== undefined && isFunction(plugin.settings.onTogglerClick)) {
+                plugin.settings.onTogglerClick($menu);
             }
 
             if ($menu.status === "opened") {
@@ -179,17 +235,17 @@
             $icon.removeClass();
 
             if (side === "left") {
-                $icon.addClass(options.icons.right);
+                $icon.addClass(plugin.settings.icons.right);
             } else if (side === "right") {
-                $icon.addClass(options.icons.left);
+                $icon.addClass(plugin.settings.icons.left);
             }
 
             $icon.addClass('icon');
         }
 
         function startDefault() {
-            if (options.side === "left") {
-                if (options.autoClose) {
+            if (plugin.settings.side === "left") {
+                if (plugin.settings.autoClose) {
                     $menu.status = "closed";
                     $menu.hide().animate({
                         left: -($menu.width() + 2)
@@ -197,15 +253,15 @@
                         $menu.show();
                         switchArrow("left");
                     });
-                } else if (!options.autoClose) {
+                } else if (!plugin.settings.autoClose) {
                     switchArrow("right");
                     $menu.status = "opened";
-                    if (options.pushBody) {
+                    if (plugin.settings.pushBody) {
                         $DOMBody.css("margin-left", $menu.width() + 20);
                     }
                 }
-            } else if (options.side === "right") {
-                if (options.autoClose) {
+            } else if (plugin.settings.side === "right") {
+                if (plugin.settings.autoClose) {
                     $menu.status = "closed";
                     $menu.hide().animate({
                         right: -($menu.width() + 2)
@@ -216,7 +272,7 @@
                 } else {
                     switchArrow("left");
                     $menu.status = "opened";
-                    if (options.pushBody) {
+                    if (plugin.settings.pushBody) {
                         $DOMBody.css("margin-right", $menu.width() + 20);
                     }
                 }
@@ -224,7 +280,7 @@
         }
 
         function startClosed() {
-            if (options.side === "left") {
+            if (plugin.settings.side === "left") {
                 $menu.status = "closed";
                 $menu.hide().animate({
                     left: -($menu.width() + 2)
@@ -232,7 +288,7 @@
                     $menu.show();
                     switchArrow("left");
                 });
-            } else if (options.side === "right") {
+            } else if (plugin.settings.side === "right") {
                 $menu.status = "closed";
                 $menu.hide().animate({
                     right: -($menu.width() + 2)
@@ -244,17 +300,17 @@
         }
 
         function startOpened() {
-            if (options.side === "left") {
+            if (plugin.settings.side === "left") {
                 switchArrow("right");
                 $menu.status = "opened";
-                if (options.pushBody) {
+                if (plugin.settings.pushBody) {
                     $DOMBody.css("margin-left", $menu.width() + 20);
                 }
 
-            } else if (options.side === "right") {
+            } else if (plugin.settings.side === "right") {
                 switchArrow("left");
                 $menu.status = "opened";
-                if (options.pushBody) {
+                if (plugin.settings.pushBody) {
                     $DOMBody.css("margin-right", $menu.width() + 20);
                 }
             }
@@ -262,55 +318,55 @@
 
         function closeMenu(execFunctions) {
             if (execFunctions) {
-                if (options.onBeforeClose !== undefined && isFunction(options.onBeforeClose)) {
-                    options.onBeforeClose($menu);
+                if (plugin.settings.onBeforeClose !== undefined && isFunction(plugin.settings.onBeforeClose)) {
+                    plugin.settings.onBeforeClose($menu);
                 }
             }
-            if (options.side === "left") {
+            if (plugin.settings.side === "left") {
 
-                if (options.pushBody) {
-                    $DOMBody.animate({marginLeft: bodyProperties.originalMarginLeft}, {duration: options.duration});
+                if (plugin.settings.pushBody) {
+                    $DOMBody.animate({marginLeft: bodyProperties.originalMarginLeft}, {duration: plugin.settings.duration});
                 }
 
                 $menu.animate({
                     left: -($menu.width() + 2)
                 }, {
-                    duration: options.duration,
+                    duration: plugin.settings.duration,
                     done: function () {
                         switchArrow("left");
                         $menu.status = "closed";
 
                         if (execFunctions) {
-                            if (options.onClose !== undefined && isFunction(options.onClose)) {
-                                options.onClose($menu);
+                            if (plugin.settings.onClose !== undefined && isFunction(plugin.settings.onClose)) {
+                                plugin.settings.onClose($menu);
                             }
                         }
                     }
                 });
-            } else if (options.side === "right") {
+            } else if (plugin.settings.side === "right") {
 
-                if (options.pushBody) {
-                    $DOMBody.animate({marginRight: bodyProperties.originalMarginRight}, {duration: options.duration});
+                if (plugin.settings.pushBody) {
+                    $DOMBody.animate({marginRight: bodyProperties.originalMarginRight}, {duration: plugin.settings.duration});
                 }
 
                 $menu.animate({
                     right: -($menu.width() + 2)
                 }, {
-                    duration: options.duration,
+                    duration: plugin.settings.duration,
                     done: function () {
                         switchArrow("right");
                         $menu.status = "closed";
 
                         if (execFunctions) {
-                            if (options.onClose !== undefined && isFunction(options.onClose)) {
-                                options.onClose($menu);
+                            if (plugin.settings.onClose !== undefined && isFunction(plugin.settings.onClose)) {
+                                plugin.settings.onClose($menu);
                             }
                         }
                     }
                 });
             }
 
-            if (options.remember) {
+            if (plugin.settings.remember) {
                 storeCookie($menu.cookieName, "closed");
             }
 
@@ -319,56 +375,56 @@
         function openMenu(execFunctions) {
 
             if (execFunctions) {
-                if (options.onBeforeOpen !== undefined && isFunction(options.onBeforeOpen)) {
-                    options.onBeforeOpen($menu);
+                if (plugin.settings.onBeforeOpen !== undefined && isFunction(plugin.settings.onBeforeOpen)) {
+                    plugin.settings.onBeforeOpen($menu);
                 }
             }
 
-            if (options.side === "left") {
+            if (plugin.settings.side === "left") {
 
-                if (options.pushBody) {
-                    $DOMBody.animate({marginLeft: $menu.width() + 20}, {duration: options.duration});
+                if (plugin.settings.pushBody) {
+                    $DOMBody.animate({marginLeft: $menu.width() + 20}, {duration: plugin.settings.duration});
                 }
 
                 $menu.animate({
                     left: 0
                 }, {
-                    duration: options.duration,
+                    duration: plugin.settings.duration,
                     done: function () {
                         switchArrow("right");
                         $menu.status = "opened";
 
                         if (execFunctions) {
-                            if (options.onOpen !== undefined && isFunction(options.onOpen)) {
-                                options.onOpen($menu);
+                            if (plugin.settings.onOpen !== undefined && isFunction(plugin.settings.onOpen)) {
+                                plugin.settings.onOpen($menu);
                             }
                         }
                     }
                 });
-            } else if (options.side === "right") {
+            } else if (plugin.settings.side === "right") {
 
-                if (options.pushBody) {
-                    $DOMBody.animate({marginRight: $menu.width() + 20}, {duration: options.duration});
+                if (plugin.settings.pushBody) {
+                    $DOMBody.animate({marginRight: $menu.width() + 20}, {duration: plugin.settings.duration});
                 }
 
                 $menu.animate({
                     right: 0
                 }, {
-                    duration: options.duration,
+                    duration: plugin.settings.duration,
                     done: function () {
                         switchArrow("left");
                         $menu.status = "opened";
 
                         if (execFunctions) {
-                            if (options.onOpen !== undefined && isFunction(options.onOpen)) {
-                                options.onOpen($menu);
+                            if (plugin.settings.onOpen !== undefined && isFunction(plugin.settings.onOpen)) {
+                                plugin.settings.onOpen($menu);
                             }
                         }
                     }
                 });
             }
 
-            if (options.remember) {
+            if (plugin.settings.remember) {
                 storeCookie($menu.cookieName, "opened");
             }
         }
@@ -378,11 +434,11 @@
             var windowWidth = $(window).width();
 
             if (windowWidth <= 480) {
-                options.pushBody = false;
-                options.closeOnClick = true;
+                plugin.settings.pushBody = false;
+                plugin.settings.closeOnClick = true;
             } else {
-                options.pushBody = $menu.originalPushBody;
-                options.closeOnClick = $menu.originalCloseOnClick;
+                plugin.settings.pushBody = $menu.originalPushBody;
+                plugin.settings.closeOnClick = $menu.originalCloseOnClick;
             }
         }
 
@@ -419,35 +475,29 @@
                 startOpened();
             }
         }
+    }
+    
+    $.fn.bootSideMenu = function (options) {
 
-        var resizeStart;
-        var resizeEnd;
-        var wait = 250;
-        window.addEventListener("resize", function () {
-            resizeStart = new Date().getMilliseconds();
-            resizeEnd = resizeStart + wait;
-            setTimeout(function () {
-                var now = new Date().getMilliseconds();
-                if (now > resizeEnd) {
-                    onResize();
-                }
-            }, wait);
-        }, false);
+        
+        // iterate through the DOM elements we are attaching the plugin to
+        return this.each(function() {
 
+          // if plugin has not already been attached to the element
+          if (undefined == $(this).data('bootSideMenu')) {
 
-        $.fn.BootSideMenu.open = function () {
-            openMenu();
-        };
+              // create a new instance of the plugin
+              // pass the DOM element and the user-provided options as arguments
+              var plugin = new $.bootSideMenu(this, options);
 
-        $.fn.BootSideMenu.close = function () {
-            closeMenu();
-        };
+              // in the jQuery version of the element
+              // store a reference to the plugin object
+              // you can later access the plugin and its methods and properties like
+              // element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
+              // element.data('pluginName').settings.propertyName
+              $(this).data('bootSideMenu', plugin);
 
-        $.fn.BootSideMenu.toggle = function () {
-            toggle();
-        };
-
-        return this;
-
+         }
+      });
     }
 }(jQuery));
