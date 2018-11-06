@@ -187,14 +187,17 @@
 
       plugin.open = function () {
         openMenu();
+        return $menu;
       };
 
       plugin.close = function () {
         closeMenu();
+        return $menu;
       };
 
       plugin.toggle = function () {
         toggle();
+        return $menu;
       };
       
        // fire up the plugin!
