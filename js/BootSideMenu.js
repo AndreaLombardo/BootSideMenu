@@ -7,7 +7,7 @@
 (function ($) {
 
     // here we go!
-    $.bootSideMenu = function(element, userOptions) {
+    $.BootSideMenu = function(element, userOptions) {
         var defaults = {
             side: "left",
             duration: 500,
@@ -480,25 +480,36 @@
         }
     }
     
-    $.fn.bootSideMenu = function (options) {
+    $.fn.BootSideMenu = function (options) {
 
+        $.fn.BootSideMenu.open = function () {
+            openMenu();
+        };
+
+        $.fn.BootSideMenu.close = function () {
+            closeMenu();
+        };
+
+        $.fn.BootSideMenu.toggle = function () {
+            toggle();
+        };
         
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function() {
 
           // if plugin has not already been attached to the element
-          if (undefined == $(this).data('bootSideMenu')) {
+          if (undefined == $(this).data('BootSideMenu')) {
 
               // create a new instance of the plugin
               // pass the DOM element and the user-provided options as arguments
-              var plugin = new $.bootSideMenu(this, options);
+              var plugin = new $.BootSideMenu(this, options);
 
               // in the jQuery version of the element
               // store a reference to the plugin object
               // you can later access the plugin and its methods and properties like
               // element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
               // element.data('pluginName').settings.propertyName
-              $(this).data('bootSideMenu', plugin);
+              $(this).data('BootSideMenu', plugin);
 
          }
       });
