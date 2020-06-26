@@ -1,3 +1,5 @@
+This project is no longer maintained. But it still works!
+
 # BootSideMenu
 After a long time a new (hope better) version is here.
 **BootSideMenu** is a jQuery plugin to easily build a sliding menu in a Bootstrap based application.
